@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import BangGia from './pages/BangGia';
-import DichVu from './pages/DichVu';
+import DichVuSuaChua from './pages/DichVuSuaChua';
 import PhanMem from './pages/PhanMem';
 import LienHe from './pages/LienHe';
 import './index.css';
@@ -18,7 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/bang-gia" element={<BangGia />} />
-            <Route path="/dich-vu" element={<DichVu />} />
+            <Route path="/dich-vu" element={<DichVuSuaChua />} />
             <Route path="/phan-mem" element={<PhanMem />} />
             <Route path="/lien-he" element={<LienHe />} />
           </Routes>

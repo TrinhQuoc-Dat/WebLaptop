@@ -153,11 +153,11 @@ const Home = () => {
       <section className="brands-section" style={{ padding: '2rem 0', borderTop: '1px solid #eee' }}>
         <div className="container">
           <div className="brands-container" style={{ display: 'flex', justifyContent: 'center', gap: '30px', flexWrap: 'wrap' }}>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Dell_logo_2016.svg" alt="Dell" height="40" style={{ opacity: 0.7, width: '80px' }} />
+            <img src="https://res.cloudinary.com/degewiqpj/image/upload/v1775128490/dell-1_khlgss.png" alt="Dell" height="40" style={{ opacity: 0.7, width: '120px' }} />
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg" alt="HP" height="40" style={{ opacity: 0.7, width: '40px' }} />
             <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg" alt="Asus" height="40" style={{ opacity: 0.7, width: '100px' }} />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Acer_Logo.svg" alt="Acer" height="40" style={{ opacity: 0.7, width: '100px' }} />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Apple_macbook_logo.svg" alt="Macbook" height="40" style={{ opacity: 0.7, width: '120px' }} />
+            <img src="https://res.cloudinary.com/degewiqpj/image/upload/v1775128490/acer-5_jvk29s.png" alt="Acer" height="40" style={{ opacity: 0.7, width: '120px' }} />
+            <img src="https://res.cloudinary.com/degewiqpj/image/upload/v1775128490/macbook_yim54e.png" alt="Macbook" height="40" style={{ opacity: 0.7, width: '140px' }} />
             <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" height="40" style={{ opacity: 0.7, width: '120px' }} />
           </div>
         </div>
