@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import BangGia from './pages/BangGia';
 import DichVuSuaChua from './pages/DichVuSuaChua';
 import PhanMem from './pages/PhanMem';
+import PhanMemDetail from './pages/PhanMemDetail';
 import LienHe from './pages/LienHe';
 import './index.css';
 
@@ -20,6 +21,7 @@ function App() {
             <Route path="/bang-gia" element={<BangGia />} />
             <Route path="/dich-vu" element={<DichVuSuaChua />} />
             <Route path="/phan-mem" element={<PhanMem />} />
+            <Route path="/phan-mem/:id" element={<PhanMemDetail />} />
             <Route path="/lien-he" element={<LienHe />} />
           </Routes>
         </main>
