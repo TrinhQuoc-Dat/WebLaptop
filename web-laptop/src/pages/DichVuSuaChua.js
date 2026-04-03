@@ -79,7 +79,7 @@ const DichVuSuaChua = () => {
 
       {/* BẢNG KIỂM TRA SỬA CHỮA */}
       <section style={{ padding: '60px 20px', backgroundColor: '#fff' }}>
-        <div className="container" style={{ maxWidth: '1000px', margin: '0 auto' }}>
+        <div className="container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <h2 style={{ textAlign: 'center', color: '#d32f2f', fontSize: '2rem', marginBottom: '30px', fontWeight: 'bold' }}>Khi nào nên đi kiểm tra, sửa chữa Laptop</h2>
           <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #333', fontSize: '1.1rem' }}>
@@ -113,7 +113,7 @@ const DichVuSuaChua = () => {
         </div>
       </section>
       <section style={{ padding: '60px 20px', backgroundColor: '#f9f9f9' }}>
-        <div className="container" style={{ maxWidth: '900px', margin: '0 auto', lineHeight: '1.8' }}>
+        <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', lineHeight: '1.8' }}>
           <h2 style={{ textAlign: 'center', color: '#0ea5e9', fontSize: '2rem', marginBottom: '40px', textTransform: 'uppercase' }}>Quy Trình Sửa Chữa Chuyên Nghiệp</h2>
 
           <h4 style={{ fontSize: '1.3rem', color: '#d32f2f', marginBottom: '10px' }}>Bước 1: Tiếp nhận và kiểm tra</h4>
@@ -137,7 +137,7 @@ const DichVuSuaChua = () => {
 
 
       <section style={{ padding: '60px 20px', backgroundColor: '#fff' }}>
-        <div className="container" style={{ maxWidth: '1000px', margin: '0 auto' }}>
+        <div className="container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <h2 style={{ textAlign: 'center', color: '#0ea5e9', fontSize: '2rem', marginBottom: '40px', textTransform: 'uppercase' }}>Các Lỗi Phổ Biến Ở Laptop</h2>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '40px' }}>
@@ -283,7 +283,7 @@ const DichVuSuaChua = () => {
       </section>
 
       <section style={{ padding: '60px 20px', backgroundColor: '#fff' }}>
-        <div className="container" style={{ maxWidth: '900px', margin: '0 auto', color: '#444', lineHeight: '1.8' }}>
+        <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', color: '#444', lineHeight: '1.8' }}>
           <h2 style={{ textAlign: 'center', color: '#333', fontSize: '2rem', marginBottom: '40px', fontWeight: 'bold' }}>Cách dùng Laptop như thế nào để tránh hư hỏng</h2>
 
           {/* Item 1 */}
