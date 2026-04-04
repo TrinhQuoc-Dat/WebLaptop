@@ -5,7 +5,7 @@ import {
   ChevronLeft, Info, Wrench, CheckCircle, Package,
   ShieldCheck, ListOrdered, DollarSign, Clock,
   Calendar, Tag, PhoneCall, MessageCircle, ArrowRight,
-  Share2, Printer, MapPin, Award
+  MapPin
 } from 'lucide-react';
 
 const PhanMemDetail = () => {
@@ -57,12 +57,12 @@ const PhanMemDetail = () => {
 
       <div className="detail-container">
         {/* Breadcrumb */}
-        <nav className="detail-breadcrumb-nav">
-          <Link to="/" style={{ color: '#666' }}>Trang chủ</Link>
-          <span style={{ color: '#ccc' }}>/</span>
-          <Link to="/phan-mem" style={{ color: '#666' }}>Phần mềm</Link>
-          <span style={{ color: '#ccc' }}>/</span>
-          <span style={{ color: '#0d6efd', fontWeight: '700' }}>{category}</span>
+        <nav className="breadcrumb">
+          <Link to="/">LaptopCare</Link>
+          <span className="separator">/</span>
+          <Link to="/phan-mem">Phần mềm</Link>
+          <span className="separator">/</span>
+          <span className="current">{category}</span>
         </nav>
 
         <div className="detail-layout-grid">
@@ -153,7 +153,7 @@ const PhanMemDetail = () => {
                         <img
                           src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&q=80"
                           alt="Minh họa"
-                          style={{ borderRadius: '20px', width: '100%', boxShadow: '0 10px 15px rgba(0,0,0,0.1)' }}
+                          style={{ borderRadius: '4px', width: '100%', border: '1px solid #e5e7eb' }}
                         />
                       </div>
                     )}
@@ -166,7 +166,7 @@ const PhanMemDetail = () => {
             <section id="section-3">
               <div className="price-black-card">
                 <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-                  <div className="tag-badge" style={{ background: '#0d6efd', color: '#fff', border: 'none', marginBottom: '15px' }}>Bảng giá niêm yết</div>
+                  <div className="tag-badge" style={{ background: '#0b5e9d', color: '#fff', border: 'none', marginBottom: '15px' }}>Bảng giá niêm yết</div>
                   <h2 className="detail-h1" style={{ color: '#fff', fontSize: '3rem', margin: 0 }}>Chi phí dịch vụ dự kiến</h2>
                 </div>
 
@@ -185,7 +185,7 @@ const PhanMemDetail = () => {
                   })}
                 </div>
 
-                <div style={{ marginTop: '50px', background: 'rgba(255,255,255,0.05)', padding: '25px', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', gap: '20px' }}>
+                <div style={{ marginTop: '50px', background: 'rgba(255,255,255,0.05)', padding: '25px', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', gap: '20px' }}>
                   <Info size={32} style={{ color: '#fbbf24' }} />
                   <p style={{ fontSize: '0.9rem', color: '#ccc', fontStyle: 'italic', margin: 0 }}>
                     Lưu ý: Giá trên áp dụng cho hầu hết các dòng laptop phổ thông. Với các dòng Gaming, Macbook đời mới, vui lòng liên hệ trực tiếp để có giá chính xác theo linh kiện thực tế.
@@ -205,22 +205,22 @@ const PhanMemDetail = () => {
                   <img
                     src="https://images.unsplash.com/photo-1597733336794-12d05021d510?w=800&q=80"
                     alt="Technical Support"
-                    style={{ width: '100%', borderRadius: '40px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}
+                    style={{ width: '100%', borderRadius: '4px', border: '1px solid #e5e7eb' }}
                   />
                 </div>
                 <div style={{ flex: '1.2', minWidth: '300px' }}>
-                  <div style={{ color: '#0d6efd', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.75rem', marginBottom: '15px' }}>Trách nhiệm & Tận tâm</div>
+                  <div style={{ color: '#0b5e9d', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.75rem', marginBottom: '15px' }}>Trách nhiệm & Tận tâm</div>
                   <p style={{ fontSize: '1.4rem', fontStyle: 'italic', color: '#1f2937', fontWeight: '600', lineHeight: '1.6' }}>
                     "{content.service}"
                   </p>
                   <div style={{ display: 'flex', gap: '30px', marginTop: '30px' }}>
                     <div>
-                      <div style={{ color: '#0d6efd', fontSize: '2.5rem', fontWeight: '900' }}>99%</div>
+                      <div style={{ color: '#0b5e9d', fontSize: '2.5rem', fontWeight: '900' }}>99%</div>
                       <div style={{ fontSize: '0.7rem', fontWeight: '800', color: '#999', textTransform: 'uppercase' }}>Hài lòng tuyệt đối</div>
                     </div>
                     <div style={{ width: '1px', background: '#ddd' }}></div>
                     <div>
-                      <div style={{ color: '#0d6efd', fontSize: '2.5rem', fontWeight: '900' }}>10+</div>
+                      <div style={{ color: '#0b5e9d', fontSize: '2.5rem', fontWeight: '900' }}>10+</div>
                       <div style={{ fontSize: '0.7rem', fontWeight: '800', color: '#999', textTransform: 'uppercase' }}>Máy/Ngày</div>
                     </div>
                   </div>
@@ -230,15 +230,15 @@ const PhanMemDetail = () => {
 
             {/* SECTION 5: BENEFITS */}
             <section id="section-5">
-              <div style={{ background: '#eff6ff', borderRadius: '50px', padding: '60px', marginTop: '80px', border: '1px solid #dbeafe' }}>
+              <div style={{ background: '#f8fafc', borderRadius: '4px', padding: '60px', marginTop: '80px', border: '1px solid #e2e8f0' }}>
                 <div style={{ textAlign: 'center', marginBottom: '40px' }}>
                   <h2 className="detail-h2" style={{ fontSize: '2.5rem' }}>Cam kết vàng của LaptopCare</h2>
                   <p style={{ color: '#666', fontStyle: 'italic', fontWeight: '500', marginTop: '10px' }}>Sự tin tưởng của khách hàng là ưu tiên hàng đầu</p>
                 </div>
                 <div className="info-card-grid">
                   {content.benefits.map((benefit, idx) => (
-                    <div key={idx} className="info-item-card" style={{ padding: '25px', border: 'none', shadow: 'none' }}>
-                      <div className="info-card-icon" style={{ background: '#fff', boxShadow: '0 5px 10px rgba(0,0,0,0.05)' }}>
+                    <div key={idx} className="info-item-card" style={{ padding: '25px', background: '#fff' }}>
+                      <div className="info-card-icon" style={{ background: '#f1f5f9', border: '1px solid #e5e7eb' }}>
                         <ShieldCheck size={24} />
                       </div>
                       <span style={{ fontSize: '1.15rem', fontWeight: '800', color: '#333' }}>{benefit}</span>
@@ -252,7 +252,7 @@ const PhanMemDetail = () => {
             <section id="section-6">
               <div style={{ textAlign: 'center', margin: '80px 0 60px' }}>
                 <h2 className="detail-h2" style={{ fontSize: '2.5rem' }}>Quy trình xử lý chuyên nghiệp</h2>
-                <div style={{ width: '60px', height: '6px', background: '#0d6efd', margin: '20px auto', borderRadius: '3px' }}></div>
+                <div style={{ width: '60px', height: '6px', background: '#0b5e9d', margin: '20px auto', borderRadius: '4px' }}></div>
               </div>
               <div className="timeline-vertical">
                 {content.steps.map((step, idx) => (
@@ -305,17 +305,17 @@ const PhanMemDetail = () => {
               </div>
 
               {/* Sidebar Quick Contact */}
-              <div className="detail-sidebar-box" style={{ background: '#111827', color: '#fff', border: 'none' }}>
+              <div className="detail-sidebar-box" style={{ background: '#1a1a1a', color: '#fff', border: 'none' }}>
                 <h3 style={{ fontSize: '1.5rem', fontWeight: '900', marginBottom: '15px', color: '#fff' }}>Hỗ trợ tận nơi</h3>
                 <p style={{ color: '#9ca3af', fontWeight: '500', marginBottom: '30px' }}>Phục vụ khu vực TP.HCM, kỹ thuật đến tận nhà trong 30-45 phút.</p>
 
                 <div style={{ marginBottom: '30px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
                   <div style={{ display: 'flex', gap: '10px' }}>
-                    <MapPin size={18} style={{ color: '#60a5fa', shrink: '0' }} />
+                    <MapPin size={18} style={{ color: '#0b5e9d', shrink: '0' }} />
                     <span style={{ fontSize: '0.9rem', fontWeight: '600' }}>Cơ sở 1: Quận 1, Tp. HCM</span>
                   </div>
                   <div style={{ display: 'flex', gap: '10px' }}>
-                    <MapPin size={18} style={{ color: '#60a5fa', shrink: '0' }} />
+                    <MapPin size={18} style={{ color: '#0b5e9d', shrink: '0' }} />
                     <span style={{ fontSize: '0.9rem', fontWeight: '600' }}>Cơ sở 2: Quận 10, Tp. HCM</span>
                   </div>
                 </div>
@@ -326,15 +326,15 @@ const PhanMemDetail = () => {
               </div>
 
               {/* Trust Badges */}
-              <div className="detail-sidebar-box" style={{ border: '2px dashed #0d6efd', background: '#f0f7ff' }}>
-                <h4 style={{ fontSize: '1rem', fontWeight: '900', color: '#0d6efd', marginBottom: '15px' }}>Chuyên gia tư vấn</h4>
+              <div className="detail-sidebar-box" style={{ border: '1px solid #e5e7eb', background: '#f8fafc' }}>
+                <h4 style={{ fontSize: '1rem', fontWeight: '900', color: '#0b5e9d', marginBottom: '15px' }}>Chuyên gia tư vấn</h4>
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '15px' }}>
-                  <div style={{ width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden', border: '2px solid #0d6efd' }}>
+                  <div style={{ width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden', border: '2px solid #0b5e9d' }}>
                     <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=200&q=80" alt="Specialist" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
                   <div>
                     <div style={{ fontWeight: '800', fontSize: '0.9rem' }}>Phú Cường</div>
-                    <div style={{ fontSize: '0.7rem', color: '#0d6efd', fontWeight: '700' }}>Trưởng nhóm kỹ thuật</div>
+                    <div style={{ fontSize: '0.7rem', color: '#0b5e9d', fontWeight: '700' }}>Trưởng nhóm kỹ thuật</div>
                   </div>
                 </div>
                 <p style={{ fontSize: '0.85rem', color: '#666', fontStyle: 'italic', margin: 0, lineHeight: '1.5' }}>

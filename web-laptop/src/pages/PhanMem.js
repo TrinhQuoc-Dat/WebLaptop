@@ -42,7 +42,7 @@ const PhanMem = () => {
   };
 
   return (
-    <div style={{ backgroundColor: '#f3f4f6', padding: '2rem 0', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: '#f8f9fa', padding: '2rem 0', minHeight: '100vh' }}>
       <div className="container" style={{ maxWidth: '1200px' }}>
 
         {/* Breadcrumb */}
