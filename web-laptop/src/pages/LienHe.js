@@ -1,5 +1,5 @@
-import React from 'react';
-import { Mail, Phone, MapPin, Clock, Send, ShieldCheck, Award, Users, Trash2 } from 'lucide-react';
+
+import { Phone, MapPin, Clock, Send, ShieldCheck, Award, Users } from 'lucide-react';
 
 const LienHe = () => {
   const handleSubmit = (e) => {
