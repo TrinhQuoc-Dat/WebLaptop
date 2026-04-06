@@ -1,4 +1,3 @@
-import React from 'react';
 import { Phone, MapPin, Clock, Send, ShieldCheck, Award, Users } from 'lucide-react';
 
 const LienHe = () => {
