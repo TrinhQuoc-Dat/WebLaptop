@@ -47,7 +47,7 @@ const PhanMem = () => {
 
         {/* Breadcrumb */}
         <nav className="breadcrumb">
-          <Link to="/">LaptopCare</Link>
+          <Link to="/">LAPTOP PHÚ QUỐC</Link>
           <span className="separator">/</span>
           <span className="current">Phần mềm</span>
         </nav>
@@ -57,11 +57,11 @@ const PhanMem = () => {
           <div className="news-header-line"></div>
         </div>
 
-        <div className="news-layout-flex" style={{ display: 'flex', gap: '40px' }}>
+        <div className="news-layout-flex">
 
           {/* Main Content (80%) */}
-          <div style={{ flex: '8' }}>
-            <div className="news-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+          <div className="news-main-content">
+            <div className="news-grid">
               {currentItems.length > 0 ? (
                 currentItems.map((item) => (
                   <Link
@@ -136,7 +136,7 @@ const PhanMem = () => {
           </div>
 
           {/* Sidebar (20%) */}
-          <div style={{ flex: '2', minWidth: '220px' }}>
+          <div className="news-sidebar">
             <div className="sidebar-container">
               <div className="sidebar-title-wrapper">
                 <h3 className="sidebar-title">Danh mục</h3>

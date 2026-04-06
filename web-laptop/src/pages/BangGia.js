@@ -121,7 +121,7 @@ const BangGia = () => {
             lineHeight: '1.7',
             fontSize: '1.05rem'
           }}>
-            <p>LaptopCare cam kết minh bạch về giá cả dịch vụ. Tất cả các thiết bị đều được kỹ thuật viên kiểm tra kỹ lưỡng và báo giá chính xác cho khách hàng trước khi tiến hành sửa chữa.</p>
+            <p>LAPTOP PHÚ QUỐC cam kết minh bạch về giá cả dịch vụ. Tất cả các thiết bị đều được kỹ thuật viên kiểm tra kỹ lưỡng và báo giá chính xác cho khách hàng trước khi tiến hành sửa chữa.</p>
             <p>Mức giá thực tế có thể thay đổi tùy thuộc vào tình trạng hư hỏng, linh kiện thay thế và độ hiếm của dòng máy.</p>
           </div>
         </div>
@@ -170,7 +170,7 @@ const BangGia = () => {
         </div>
 
         <div style={{ marginTop: '30px', textAlign: 'center', color: '#9ca3af', fontSize: '0.9rem', fontStyle: 'italic' }}>
-          * Lưu ý: Bảng giá trên chỉ mang tính chất tham khảo. Vui lòng liên hệ Hotline: 09xx.xxx.xxx để được hỗ trợ báo giá chính xác nhất.
+          * Lưu ý: Bảng giá trên chỉ mang tính chất tham khảo. Vui lòng liên hệ Hotline: 0815 774 668 để được hỗ trợ báo giá chính xác nhất.
         </div>
       </div>
 

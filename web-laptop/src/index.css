@@ -409,6 +409,21 @@ ul {
   margin-bottom: 30px;
 }
 
+.news-layout-flex {
+  display: flex;
+  gap: 40px;
+}
+
+.news-main-content {
+  flex: 8;
+  min-width: 0;
+}
+
+.news-sidebar {
+  flex: 2;
+  min-width: 250px;
+}
+
 .news-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -537,7 +552,8 @@ ul {
 
 @media (max-width: 600px) {
   .news-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px; /* Slightly smaller gap for mobile */
   }
 }
 
@@ -691,7 +707,11 @@ ul {
 
 @media (max-width: 992px) {
   .news-layout-flex {
-    flex-direction: column;
+    flex-direction: column-reverse; /* Put sidebar on top, cards below */
+    gap: 30px;
+  }
+  .news-sidebar {
+    min-width: unset;
   }
 }
 

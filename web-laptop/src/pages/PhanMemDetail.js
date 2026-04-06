@@ -58,7 +58,7 @@ const PhanMemDetail = () => {
       <div className="detail-container">
         {/* Breadcrumb */}
         <nav className="breadcrumb">
-          <Link to="/">LaptopCare</Link>
+          <Link to="/">LAPTOP PHÚ QUỐC</Link>
           <span className="separator">/</span>
           <Link to="/phan-mem">Phần mềm</Link>
           <span className="separator">/</span>
@@ -102,7 +102,7 @@ const PhanMemDetail = () => {
                 </div>
                 <div className="img-caption">
                   <Info size={14} style={{ marginRight: '6px', verticalAlign: 'middle' }} />
-                  Hình ảnh minh họa về quy trình chuẩn đoán và xử lý tại LaptopCare
+                  Hình ảnh minh họa về quy trình chuẩn đoán và xử lý tại LAPTOP PHÚ QUỐC
                 </div>
               </div>
             </header>
@@ -198,7 +198,7 @@ const PhanMemDetail = () => {
             <section id="section-4">
               <div className="detail-section-head">
                 <div className="head-icon-box"><Package size={28} /></div>
-                <h2 className="detail-h2">Chi tiết dịch vụ tại LaptopCare</h2>
+                <h2 className="detail-h2">Chi tiết dịch vụ tại LAPTOP PHÚ QUỐC</h2>
               </div>
               <div style={{ display: 'flex', gap: '40px', alignItems: 'center', flexWrap: 'wrap' }}>
                 <div style={{ flex: '1', minWidth: '300px' }}>
@@ -232,7 +232,7 @@ const PhanMemDetail = () => {
             <section id="section-5">
               <div style={{ background: '#f8fafc', borderRadius: '4px', padding: '60px', marginTop: '80px', border: '1px solid #e2e8f0' }}>
                 <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-                  <h2 className="detail-h2" style={{ fontSize: '2.5rem' }}>Cam kết vàng của LaptopCare</h2>
+                  <h2 className="detail-h2" style={{ fontSize: '2.5rem' }}>Cam kết vàng của LAPTOP PHÚ QUỐC</h2>
                   <p style={{ color: '#666', fontStyle: 'italic', fontWeight: '500', marginTop: '10px' }}>Sự tin tưởng của khách hàng là ưu tiên hàng đầu</p>
                 </div>
                 <div className="info-card-grid">
@@ -277,9 +277,9 @@ const PhanMemDetail = () => {
               </p>
               <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
                 <button className="cta-button-white">
-                  <PhoneCall size={24} /> 09xx.xxx.xxx
+                  <PhoneCall size={24} /> 0815 774 668
                 </button>
-                <button className="cta-button-white" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>
+                <button className="cta-button-white" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)', fontFamily: 'inherit' }}>
                   <MessageCircle size={24} /> LIÊN HỆ ZALO
                 </button>
               </div>
@@ -307,20 +307,16 @@ const PhanMemDetail = () => {
               {/* Sidebar Quick Contact */}
               <div className="detail-sidebar-box" style={{ background: '#1a1a1a', color: '#fff', border: 'none' }}>
                 <h3 style={{ fontSize: '1.5rem', fontWeight: '900', marginBottom: '15px', color: '#fff' }}>Hỗ trợ tận nơi</h3>
-                <p style={{ color: '#9ca3af', fontWeight: '500', marginBottom: '30px' }}>Phục vụ khu vực TP.HCM, kỹ thuật đến tận nhà trong 30-45 phút.</p>
+                <p style={{ color: '#9ca3af', fontWeight: '#500', marginBottom: '30px' }}>Phục vụ khu vực Phú Quốc, kỹ thuật đến tận nhà nhanh chóng.</p>
 
                 <div style={{ marginBottom: '30px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
                   <div style={{ display: 'flex', gap: '10px' }}>
                     <MapPin size={18} style={{ color: '#0b5e9d', shrink: '0' }} />
-                    <span style={{ fontSize: '0.9rem', fontWeight: '600' }}>Cơ sở 1: Quận 1, Tp. HCM</span>
-                  </div>
-                  <div style={{ display: 'flex', gap: '10px' }}>
-                    <MapPin size={18} style={{ color: '#0b5e9d', shrink: '0' }} />
-                    <span style={{ fontSize: '0.9rem', fontWeight: '600' }}>Cơ sở 2: Quận 10, Tp. HCM</span>
+                    <span style={{ fontSize: '0.9rem', fontWeight: '600' }}>41C Lý Thường Kiệt, Dương Đông, Phú Quốc</span>
                   </div>
                 </div>
 
-                <button className="cta-button-white" style={{ width: '100%', marginTop: '0', fontSize: '1rem', padding: '15px' }}>
+                <button className="cta-button-white" style={{ width: '100%', marginTop: '0', fontSize: '1rem', padding: '15px', fontFamily: 'inherit' }}>
                   ĐẶT LỊCH SỬA CHỮA <ArrowRight size={18} />
                 </button>
               </div>

@@ -132,7 +132,7 @@ const Home = () => {
           </div>
           <div className="support-item">
             <Phone size={36} />
-            <span>Hotline Hỗ Trợ 24/7<br />Giao Tại TPHCM 24h</span>
+            <span>Hotline Hỗ Trợ 24/7<br />Giao Tại Phú Quốc 24h</span>
           </div>
         </div>
       </section>
@@ -166,7 +166,7 @@ const Home = () => {
       {/* SEO Viết text giới thiệu */}
       <section className="seo-text-section" style={{ backgroundColor: '#f9f9f9', padding: '3rem 0', fontSize: '0.85rem', color: '#444', lineHeight: '1.6', textAlign: 'left' }}>
         <div className="container">
-          <h3 style={{ color: '#0d6efd', fontWeight: 'bold', fontSize: '1.1rem', marginBottom: '10px' }}>Trung tâm sửa chữa laptop thay linh kiện uy tín tại khu vực TPHCM</h3>
+          <h3 style={{ color: '#0d6efd', fontWeight: 'bold', fontSize: '1.1rem', marginBottom: '10px' }}>Trung tâm sửa chữa laptop thay linh kiện uy tín tại khu vực Phú Quốc</h3>
           <p style={{ marginBottom: '15px' }}>Trung tâm phục hồi dữ liệu chuyên nghiệp, cài đặt phần mềm miễn phí và nâng cấp nhanh chóng, thay pin macbook lấy ngay. Khi laptop / macbook của bạn gặp sự cố, hãy đến ngay với hệ thống sửa chữa uy tín của chúng tôi.</p>
           <p style={{ marginBottom: '15px' }}>Tại sao khách hàng luôn tin tưởng sử dụng dịch vụ? Chúng tôi nhập khẩu linh kiện zin loại 1, quy trình tháo ráp rõ ràng minh bạch. Đội ngũ kỹ thuật viên kinh nghiệm lâu năm.</p>
 

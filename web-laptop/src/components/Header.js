@@ -13,7 +13,7 @@ const Header = () => {
       <div className="container header-container">
         <Link to="/" className="logo d-flex align-items-center" style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
           <Wrench size={24} />
-          <span>LaptopCare</span>
+          <span>LAPTOP PHÚ QUỐC</span>
         </Link>
         
         {/* Desktop Menu */}
