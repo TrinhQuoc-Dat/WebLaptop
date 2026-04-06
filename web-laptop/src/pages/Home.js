@@ -1,29 +1,28 @@
 import React from 'react';
-import { Clock, DollarSign, Wrench, MonitorCheck, Truck, ShoppingCart, RefreshCw, Phone } from 'lucide-react';
 import Hero from '../components/Hero';
 import ServiceCard from '../components/ServiceCard';
+import {
+  mainServices,
+  strengths,
+  warningSigns,
+  processSteps,
+  commitments,
+  arrowButtons,
+  supportItems
+} from '../data/homeData';
 
 const Home = () => {
-  const mainServices = [
-    { id: 1, image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", title: "SỬA LAPTOP VĂN PHÒNG", desc: "Sửa chữa phần cứng, khắc phục các vấn đề máy chậm, giật lag." },
-    { id: 2, image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", title: "SỬA MACBOOK UY TÍN", desc: "Xử lý triệt để lỗi phần cứng, phần mềm trên các dòng Macbook." },
-    { id: 3, image: "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", title: "SỬA SURFACE & LAPTOP", desc: "Kỹ thuật chuyên sâu xử lý laptop mỏng nhẹ, cao cấp và máy gaming." }
-  ];
-
-  const newServices = [
-    { id: 1, image: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", title: "THAY MÀN HÌNH LAPTOP", desc: "Thay màn hình laptop chính hãng, lấy liền, phân giải cao, bảo hành dài." },
-    { id: 2, image: "https://images.unsplash.com/photo-1614624532983-4ce03382d63d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", title: "SỬA BẢN LỀ LAPTOP", desc: "Phục hồi ngoại hình và độ chắc chắn cho laptop bị hư bản lề, gãy vỏ." },
-    { id: 3, image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80", title: "THAY PIN CHÍNH HÃNG", desc: "Cung cấp pin các dòng Dell, HP, Asus bảo hành 12-36 tháng đầy đủ." }
-  ];
-
   return (
     <div className="home-page">
       <Hero />
 
-      {/* Dịch vụ Section */}
-      <section className="services-section" style={{ backgroundColor: '#fff', padding: '3rem 0' }}>
+      {/* 2. DỊCH VỤ CHÍNH */}
+      <section className="services-section" style={{ backgroundColor: '#fff', padding: '5rem 0' }}>
         <div className="container">
-          <h2 className="section-title" style={{ color: '#d32f2f', textTransform: 'uppercase', fontSize: '1.8rem' }}>DỊCH VỤ CỦA CHÚNG TÔI</h2>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <h2 className="section-title" style={{ color: '#d32f2f', textTransform: 'uppercase', fontSize: '2rem', marginBottom: '10px' }}>DỊCH VỤ CHÍNH</h2>
+            <div style={{ width: '60px', height: '4px', backgroundColor: '#d32f2f', margin: '0 auto' }}></div>
+          </div>
           <div className="services-grid">
             {mainServices.map((svc) => (
               <ServiceCard key={svc.id} {...svc} />
@@ -32,71 +31,39 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Điểm mạnh Section (Theo hình) */}
-      <section className="features-section" style={{ backgroundColor: '#fff', padding: '1rem 0 3rem' }}>
+      {/* 3. TẠI SAO CHỌN CHÚNG TÔI */}
+      <section className="features-section" style={{ backgroundColor: '#f1f5f9', padding: '5rem 0' }}>
         <div className="container">
-          <h2 className="section-title" style={{ color: '#d32f2f', textTransform: 'uppercase', marginBottom: '1.5rem', textAlign: 'center', fontSize: '1.8rem' }}>ĐIỂM MẠNH CỦA CHÚNG TÔI</h2>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2 className="section-title" style={{ color: '#0b5e9d', textTransform: 'uppercase', fontSize: '2rem', marginBottom: '10px' }}>TẠI SAO CHỌN CHÚNG TÔI</h2>
+            <p style={{ color: '#64748b', fontSize: '1.1rem' }}>Sự tin tưởng của khách hàng là động lực phát triển của Laptop Phú Quốc</p>
+          </div>
 
-          <div className="features-grid-layout">
-            <div className="features-content">
-              <p style={{ marginBottom: '2rem', fontSize: '0.95rem', lineHeight: '1.6', color: '#555' }}>
-                Với uy tín hơn 10 năm, trên 500 ngàn khách hàng trong và ngoài nước đã tin tưởng sử dụng dịch vụ sửa chữa laptop lấy liền, thay thế linh kiện chính hãng tại trung tâm chúng tôi. Sự hài lòng của khách hàng là niềm tự hào và động lực để chúng tôi phát triển.
-              </p>
-
-              <div className="features-points">
-                <div className="feature-item">
-                  <div className="icon-circle">
-                    <Clock size={24} />
-                  </div>
-                  <div>
-                    <h4 style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '5px' }}>Bảo hành dài hạn</h4>
-                    <p style={{ fontSize: '0.85rem', color: '#666', lineHeight: '1.5' }}>Bảo hành từ 6 đến 36 tháng đối với các dịch vụ thay thế linh kiện.</p>
-                  </div>
+          <div className="features-grid-layout" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '35px' }}>
+            {strengths.map((item, idx) => (
+              <div key={idx} style={{ textAlign: 'center', padding: '20px' }}>
+                <div className="icon-circle" style={{
+                  margin: '0 auto 20px',
+                  width: '80px',
+                  height: '80px',
+                  backgroundColor: '#fff',
+                  color: '#0b5e9d',
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                }}>
+                  {item.icon}
                 </div>
-
-                <div className="feature-item">
-                  <div className="icon-circle">
-                    <Wrench size={24} />
-                  </div>
-                  <div>
-                    <h4 style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '5px' }}>Thay linh kiện lấy liền</h4>
-                    <p style={{ fontSize: '0.85rem', color: '#666', lineHeight: '1.5' }}>Kho linh kiện đầy đủ, thay thế nhanh chóng 10-15 phút có thể lấy máy.</p>
-                  </div>
-                </div>
-
-                <div className="feature-item">
-                  <div className="icon-circle">
-                    <DollarSign size={24} />
-                  </div>
-                  <div>
-                    <h4 style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '5px' }}>Giá cả hợp lý</h4>
-                    <p style={{ fontSize: '0.85rem', color: '#666', lineHeight: '1.5' }}>Báo giá rõ ràng, minh bạch trước khi sửa. Chi phí luôn cạnh tranh.</p>
-                  </div>
-                </div>
-
-                <div className="feature-item">
-                  <div className="icon-circle">
-                    <MonitorCheck size={24} />
-                  </div>
-                  <div>
-                    <h4 style={{ fontSize: '1rem', fontWeight: 'bold', marginBottom: '5px' }}>Sửa chữa chuyên nghiệp</h4>
-                    <p style={{ fontSize: '0.85rem', color: '#666', lineHeight: '1.5' }}>Bắt đúng bệnh, vệ sinh tản nhiệt cẩn thận, máy móc hàn chip hiện đại.</p>
-                  </div>
-                </div>
+                <h4 style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '12px', color: '#1a365d' }}>{item.title}</h4>
+                <p style={{ color: '#64748b', fontSize: '0.95rem', lineHeight: '1.6' }}>{item.desc}</p>
               </div>
-            </div>
-
-            <div className="features-img-container">
-              <img src="https://images.unsplash.com/photo-1593640495253-23196b27a87f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cửa hàng sửa chữa" style={{ width: '100%', borderRadius: '4px', height: '100%', minHeight: '300px', objectFit: 'cover' }} />
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Button Arrows Row */}
-      <section className="arrows-banner" style={{ background: '#f8f9fa', padding: '1.5rem 0' }}>
+      {/* Button Arrows Row (Restored) */}
+      {/* <section className="arrows-banner" style={{ background: '#f8f9fa', padding: '1.5rem 0' }}>
         <div className="container" style={{ display: 'flex', justifyContent: 'center', gap: '8px', flexWrap: 'wrap' }}>
-          {['SỬA MACBOOK', 'SỬA LAPTOP DELL', 'SỬA LAPTOP ASUS', 'SỬA LAPTOP HP', 'SỬA SURFACE'].map((txt, idx) => (
+          {arrowButtons.map((txt, idx) => (
             <div key={idx} className="arrow-btn" style={{
               backgroundColor: '#0ea5e9',
               color: '#fff',
@@ -113,76 +80,112 @@ const Home = () => {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
-      {/* Blue Support Bar */}
-      <section className="support-bar" style={{ backgroundColor: '#0ea5e9', color: '#fff', padding: '25px 0' }}>
-        <div className="container support-grid">
-          <div className="support-item">
-            <Truck size={36} />
-            <span>Giao Hàng Tận Nơi<br />Trên Toàn Quốc</span>
-          </div>
-          <div className="support-item">
-            <ShoppingCart size={36} />
-            <span>Đặt Hàng Trực Tuyến<br />Nhanh Chóng, Dễ Dàng</span>
-          </div>
-          <div className="support-item">
-            <RefreshCw size={36} />
-            <span>Đổi Trả Dễ Dàng<br />Sản Phẩm Trong 7 Ngày</span>
-          </div>
-          <div className="support-item">
-            <Phone size={36} />
-            <span>Hotline Hỗ Trợ 24/7<br />Giao Tại Phú Quốc 24h</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Dịch vụ mới Section */}
-      <section className="services-section" style={{ backgroundColor: '#fff', padding: '3rem 0' }}>
+      {/* 4. KHI NÀO NÊN MANG MÁY RA CỬA HÀNG */}
+      <section style={{ backgroundColor: '#1e293b', color: '#fff', padding: '5rem 0' }}>
         <div className="container">
-          <h2 className="section-title" style={{ color: '#d32f2f', textTransform: 'uppercase', fontSize: '1.8rem' }}>DỊCH VỤ MỚI</h2>
-          <div className="services-grid">
-            {newServices.map((svc) => (
-              <ServiceCard key={svc.id} {...svc} link="/dich-vu" />
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2 style={{ fontSize: '2rem', fontWeight: '900', marginBottom: '15px', color: '#f8fafc' }}>KHI NÀO NÊN MANG MÁY RA CỬA HÀNG KIỂM TRA?</h2>
+            <p style={{ color: '#94a3b8', fontSize: '1.1rem' }}>Đừng để tình trạng tệ hơn, hãy mang máy đi kiểm tra ngay khi gặp các dấu hiệu sau:</p>
+          </div>
+
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
+            {warningSigns.map((sign, idx) => (
+              <div key={idx} style={{
+                flex: '1 1 200px',
+                backgroundColor: 'rgba(255,255,255,0.05)',
+                padding: '25px',
+                borderRadius: '4px',
+                textAlign: 'center',
+                border: '1px solid rgba(255,255,255,0.1)'
+              }}>
+                <div style={{ color: '#ef4444', marginBottom: '15px', display: 'flex', justifyContent: 'center' }}>{sign.icon}</div>
+                <span style={{ fontWeight: 'bold' }}>{sign.text}</span>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Brand Logos */}
-      <section className="brands-section" style={{ padding: '2rem 0', borderTop: '1px solid #eee' }}>
+      {/* 5. QUY TRÌNH SỬA CHỮA */}
+      <section style={{ backgroundColor: '#fff', padding: '5rem 0' }}>
         <div className="container">
-          <div className="brands-container" style={{ display: 'flex', justifyContent: 'center', gap: '30px', flexWrap: 'wrap' }}>
-            <img src="https://res.cloudinary.com/degewiqpj/image/upload/v1775128490/dell-1_khlgss.png" alt="Dell" height="40" style={{ opacity: 0.7, width: '120px' }} />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg" alt="HP" height="40" style={{ opacity: 0.7, width: '40px' }} />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg" alt="Asus" height="40" style={{ opacity: 0.7, width: '100px' }} />
-            <img src="https://res.cloudinary.com/degewiqpj/image/upload/v1775128490/acer-5_jvk29s.png" alt="Acer" height="40" style={{ opacity: 0.7, width: '120px' }} />
-            <img src="https://res.cloudinary.com/degewiqpj/image/upload/v1775128490/macbook_yim54e.png" alt="Macbook" height="40" style={{ opacity: 0.7, width: '140px' }} />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" height="40" style={{ opacity: 0.7, width: '120px' }} />
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2 className="section-title" style={{ color: '#d32f2f', textTransform: 'uppercase', fontSize: '2rem', marginBottom: '10px' }}>QUY TRÌNH SỬA CHỮA</h2>
+            <div style={{ width: '60px', height: '4px', backgroundColor: '#d32f2f', margin: '0 auto' }}></div>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '30px' }}>
+            {processSteps.map((step, idx) => (
+              <div key={idx} style={{ padding: '30px', textAlign: 'center', position: 'relative' }}>
+                <div style={{
+                  width: '60px', height: '60px',
+                  backgroundColor: '#0b5e9d', color: '#fff',
+                  borderRadius: '50%', margin: '0 auto 20px',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  zIndex: 2, position: 'relative'
+                }}>
+                  {step.icon}
+                </div>
+                <h4 style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '10px' }}>{step.title}</h4>
+                <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.5' }}>{step.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* SEO Viết text giới thiệu */}
-      <section className="seo-text-section" style={{ backgroundColor: '#f9f9f9', padding: '3rem 0', fontSize: '0.85rem', color: '#444', lineHeight: '1.6', textAlign: 'left' }}>
+      {/* Blue Support Bar (Restored) */}
+      <section className="support-bar" style={{ backgroundColor: '#0ea5e9', color: '#fff', padding: '25px 0' }}>
+        <div className="container support-grid">
+          {supportItems.map((item, idx) => (
+            <div key={idx} className="support-item">
+              <div style={{ marginBottom: '10px' }}>{item.icon}</div>
+              <span>{item.title}<br />{item.desc}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 6. CAM KẾT TẠI CỬA HÀNG LAPTOP PHÚ QUỐC */}
+      <section className="commitments-section" style={{ backgroundColor: '#0f172a', color: '#fff', padding: '5rem 0' }}>
         <div className="container">
-          <h3 style={{ color: '#0d6efd', fontWeight: 'bold', fontSize: '1.1rem', marginBottom: '10px' }}>Trung tâm sửa chữa laptop thay linh kiện uy tín tại khu vực Phú Quốc</h3>
-          <p style={{ marginBottom: '15px' }}>Trung tâm phục hồi dữ liệu chuyên nghiệp, cài đặt phần mềm miễn phí và nâng cấp nhanh chóng, thay pin macbook lấy ngay. Khi laptop / macbook của bạn gặp sự cố, hãy đến ngay với hệ thống sửa chữa uy tín của chúng tôi.</p>
-          <p style={{ marginBottom: '15px' }}>Tại sao khách hàng luôn tin tưởng sử dụng dịch vụ? Chúng tôi nhập khẩu linh kiện zin loại 1, quy trình tháo ráp rõ ràng minh bạch. Đội ngũ kỹ thuật viên kinh nghiệm lâu năm.</p>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2 style={{ fontSize: '2rem', fontWeight: '900', marginBottom: '15px' }}>CAM KẾT TẠI CỬA HÀNG LAPTOP PHÚ QUỐC</h2>
+            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.1rem' }}>Chất lượng là danh dự - Uy tín là sự sống còn</p>
+          </div>
 
-          <h3 style={{ color: '#0d6efd', fontWeight: 'bold', fontSize: '1rem', marginTop: '20px', marginBottom: '10px' }}>
-            Dịch vụ sửa chữa thay thế linh kiện chuyên nghiệp:
-          </h3>
-          <ul style={{ listStyleType: 'disc', paddingLeft: '20px', marginBottom: '15px' }}>
-            <li>Thay màn hình laptop bị sọc, đen, nhòe màu (chờ lấy ngay 15 phút).</li>
-            <li>Thay bàn phím bị kẹt phím, đứt cáp, nước vào.</li>
-            <li>Thay pin laptop chính hãng bảo hành dài hạn.</li>
-            <li>Sửa nhanh các lỗi nguồn mạch mainboard laptop.</li>
-            <li>Bảo dưỡng máy, tra keo tản nhiệt định kỳ.</li>
-          </ul>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px' }}>
+            {commitments.map((com, idx) => (
+              <div key={idx} style={{ padding: '30px', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                <div style={{ marginBottom: '20px', color: '#38bdf8' }}>{com.icon}</div>
+                <h4 style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '12px' }}>{com.title}</h4>
+                <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.95rem', lineHeight: '1.6' }}>{com.desc}</p>
+              </div>
+            ))}
+          </div>
 
-          <h3 style={{ color: '#0d6efd', fontWeight: 'bold', fontSize: '1rem', marginTop: '20px', marginBottom: '10px' }}>Bảng giá dịch vụ sửa chữa laptop</h3>
-          <p style={{ marginBottom: '10px' }}>Tùy thuộc vào model và từng loại thế hệ máy (Đời cũ, đời Gen mới nhất...) giá linh kiện có thể thay đổi liên tục. Vui lòng liên hệ Hotline trực tiếp để được kỹ thuật viên báo giá chính xác nhất.</p>
+          {/* Integrated SEO Content */}
+          <div style={{ marginTop: '4rem', padding: '40px', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: '8px', fontSize: '0.95rem', color: 'rgba(255,255,255,0.7)', lineHeight: '1.8', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '15px', color: '#fff' }}>Hệ thống sửa chữa laptop, mainboard uy tín hàng đầu Đảo Ngọc</h3>
+            <p style={{ marginBottom: '15px' }}>Trung tâm Laptop Phú Quốc tự hào mang đến giải pháp sửa chữa laptop chuyên nghiệp lấy liền tại chỗ. Chúng tôi chuyên xử lý các ca lỗi phần cứng khó nhất như mất nguồn mainboard, sập nguồn đột ngột, máy dính nước hoặc hư hỏng linh kiện trên các dòng máy Dell, HP, Asus, Acer và đặc biệt là MacBook chuyên biệt.</p>
+            <p>Với kho linh kiện đầy đủ từ màn hình, bàn phím đến pin chính hãng, chúng tôi cam kết bảo hành dài hạn từ 6-36 tháng, giúp quý khách hoàn toàn an tâm khi sử dụng dịch vụ tại cửa hàng.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Brand Logos */}
+      <section className="brands-section" style={{ padding: '3rem 0', borderTop: '1px solid #eee', backgroundColor: '#fff' }}>
+        <div className="container">
+          <div className="brands-container" style={{ display: 'flex', justifyContent: 'center', gap: '40px', flexWrap: 'wrap', alignItems: 'center' }}>
+            <img src="https://res.cloudinary.com/degewiqpj/image/upload/v1775128490/dell-1_khlgss.png" alt="Dell" height="35" style={{ opacity: 0.5, width: '110px' }} />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg" alt="HP" height="40" style={{ opacity: 0.5, width: '40px' }} />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg" alt="Asus" height="35" style={{ opacity: 0.5, width: '90px' }} />
+            <img src="https://res.cloudinary.com/degewiqpj/image/upload/v1775128490/acer-5_jvk29s.png" alt="Acer" height="35" style={{ opacity: 0.5, width: '110px' }} />
+            <img src="https://res.cloudinary.com/degewiqpj/image/upload/v1775128490/macbook_yim54e.png" alt="Macbook" height="35" style={{ opacity: 0.5, width: '130px' }} />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" height="35" style={{ opacity: 0.5, width: '110px' }} />
+          </div>
         </div>
       </section>
     </div>

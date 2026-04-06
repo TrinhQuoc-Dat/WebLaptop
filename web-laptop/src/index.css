@@ -191,6 +191,9 @@ ul {
   border-radius: 8px;
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .service-card:hover {
@@ -206,6 +209,9 @@ ul {
 
 .service-info {
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .service-title {
@@ -218,6 +224,11 @@ ul {
   color: var(--text-muted);
   margin-bottom: 1.5rem;
   font-size: 0.95rem;
+}
+
+.service-info .btn-primary {
+  margin-top: auto;
+  align-self: flex-start;
 }
 
 /* Features Section */
