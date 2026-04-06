@@ -3,7 +3,7 @@ export const phanMemData = [
     id: 'loi-man-hinh-dell-xps',
     title: 'Hướng dẫn sửa laptop Dell XPS 13-9310 bị lỗi màn hình',
     description: 'Chi tiết các dấu hiệu và cách khắc phục tình trạng laptop Dell XPS 13 bị lỗi màn hình, nhấp nháy hoặc sọc. Xem ngay cách xử lý nhanh chóng.',
-    thumbnail: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&q=80',
+    thumbnail: 'https://res.cloudinary.com/degewiqpj/image/upload/v1775487552/huong-dan-sua-laptop-dell-xps-13-9310-chap-chon-man-hinh-chop-khi-gap-may-news-117_chuqqt.jpg',
     date: { day: '22', month: 'May' },
     category: 'Thay màn hình',
     content: {
@@ -47,7 +47,7 @@ export const phanMemData = [
     id: 'khac-phuc-laptop-nhap-nhay',
     title: 'Cách khắc phục laptop bị nhấp nháy màn hình',
     description: 'Màn hình laptop chớp nháy liên tục không chỉ gây khó chịu mà còn ảnh hưởng đến mắt. Hãy cùng tìm hiểu nguyên nhân và xử lý triệt để.',
-    thumbnail: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&q=80',
+    thumbnail: 'https://res.cloudinary.com/degewiqpj/image/upload/v1775487552/ck3181334-man-hinh-laptop-nhap-nhay-lien-tuc-2_fg0lo1.jpg',
     date: { day: '01', month: 'Jun' },
     category: 'Thay màn hình',
     content: {
@@ -91,7 +91,7 @@ export const phanMemData = [
     id: 'thay-pin-co-anh-huong-khong',
     title: 'Thay pin laptop có ảnh hưởng gì không?',
     description: 'Nhiều người e ngại việc thay pin mới sẽ làm giảm hiệu suất máy tính hoặc gây chập cháy. Bài viết này sẽ giải đáp chi tiết thắc mắc đó.',
-    thumbnail: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=500&q=80',
+    thumbnail: 'https://res.cloudinary.com/degewiqpj/image/upload/v1775487551/thay-pin-laptop_nly0bb.webp',
     date: { day: '05', month: 'May' },
     category: 'Thay pin',
     content: {
@@ -135,7 +135,7 @@ export const phanMemData = [
     id: 'sua-nguon-bao-lau',
     title: 'Sửa nguồn laptop mất bao lâu?',
     description: 'Máy tính bật không lên, mất nguồn hoàn toàn gây hoang mang. Cùng xem quy trình kiểm tra bo mạch và xử lý bộ phận nguồn.',
-    thumbnail: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=500&q=80',
+    thumbnail: 'https://res.cloudinary.com/degewiqpj/image/upload/v1775487551/sua-nguon-laptop_pgel4h.jpg',
     date: { day: '12', month: 'Apr' },
     category: 'Sửa nguồn',
     content: {
@@ -179,7 +179,7 @@ export const phanMemData = [
     id: 'nang-cap-ram-ssd',
     title: 'Những lưu ý khi nâng cấp RAM và SSD trên Laptop',
     description: 'Muốn máy chạy nhanh hơn nhưng bạn chưa rõ việc nâng cấp phần cứng có ảnh hưởng gì tới laptop không? Đọc ngay bài này.',
-    thumbnail: 'https://images.unsplash.com/photo-1542382103-60d92233f2bd?w=500&q=80',
+    thumbnail: 'https://res.cloudinary.com/degewiqpj/image/upload/v1775487551/nhung-dieu-can-luu-y-truoc-khi-nang-cap-ram-laptop_qcjppf.jpg',
     date: { day: '28', month: 'Mar' },
     category: 'Sửa main',
     content: {
@@ -223,7 +223,7 @@ export const phanMemData = [
     id: 've-sinh-laptop-dinh-ky',
     title: 'Tại sao cần vệ sinh laptop định kỳ 6 tháng?',
     description: 'Bụi bẩn bám lâu ngày là sát thủ thầm lặng gây ra vô vàn lỗi quạt, lỗi quá nhiệt dẫn đến chết chipset trên board mạch.',
-    thumbnail: 'https://images.unsplash.com/photo-1585862705417-6718d7db997b?w=500&q=80',
+    thumbnail: 'https://res.cloudinary.com/degewiqpj/image/upload/v1775487551/ve-sinh-laptop-6-thang_x2zbef.webp',
     date: { day: '15', month: 'Feb' },
     category: 'Vệ sinh laptop',
     content: {
@@ -266,7 +266,7 @@ export const phanMemData = [
     id: 'loi-ban-phim-laptop',
     title: 'Cách xử lý lỗi bàn phím laptop bị liệt, loạn chữ',
     description: 'Bàn phím là công cụ giao tiếp liên tục, nếu gặp lỗi nhấn nút không ăn, nhấn 1 ra 2 thì bạn nên kiểm tra thay mới hay vệ sinh cáp.',
-    thumbnail: 'https://images.unsplash.com/photo-1563207153-f403bf289096?w=500&q=80',
+    thumbnail: 'https://res.cloudinary.com/degewiqpj/image/upload/v1775487551/laptop-bi-liet-phim-nguyen-nhan-cach-khac-phuc-va-cac-bien-phap-thay-the-16_elvfto.jpg',
     date: { day: '10', month: 'Jan' },
     category: 'Sửa main',
     content: {
@@ -309,7 +309,7 @@ export const phanMemData = [
     id: 'loi-ket-noi-wifi-laptop',
     title: 'Xử lý laptop không nhận hoặc từ chối kết nối wifi',
     description: 'Mất cả ngày ngồi dò mẫm vì biểu tượng wifi dấu chấm than vàng, hoặc không thấy được mạng list? Tham khảo cách fix wifi dưới đây.',
-    thumbnail: 'https://images.unsplash.com/photo-1574944510065-985f401cfb38?w=500&q=80',
+    thumbnail: 'https://res.cloudinary.com/degewiqpj/image/upload/v1775487551/laptopkhongbatduocwifi_cqevse.jpg',
     date: { day: '05', month: 'Dec' },
     category: 'Sửa main',
     content: {
@@ -352,7 +352,7 @@ export const phanMemData = [
     id: 'mat-du-lieu-o-cung',
     title: 'Phục hồi dữ liệu ổ cứng, USB an toàn bảo mật',
     description: 'Xóa nhầm tài liệu, format nhầm phân vùng hay ổ cứng rơi hư hỏng? Mọi dữ liệu đều có cơ hội phục hồi nếu bạn xử lý đúng quy trình.',
-    thumbnail: 'https://images.unsplash.com/photo-1618335824040-77a83d47ad8a?w=500&q=80',
+    thumbnail: 'https://res.cloudinary.com/degewiqpj/image/upload/v1775487551/top-3-phan-mem-khoi-phuc-du-lieu-da-xoa-tren-o-cung-usb-the-nho-6_m7kqut.png',
     date: { day: '20', month: 'Nov' },
     category: 'Sửa main',
     content: {

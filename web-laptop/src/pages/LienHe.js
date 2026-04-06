@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Clock, Send, ShieldCheck, Award, Users, Trash2 } from 'lucide-react';
+import { Phone, MapPin, Clock, Send, ShieldCheck, Award, Users } from 'lucide-react';
 
 const LienHe = () => {
   const handleSubmit = (e) => {
@@ -19,10 +19,10 @@ const LienHe = () => {
       }}>
         <div className="container" style={{ maxWidth: '1000px' }}>
           <h1 style={{ fontSize: '3rem', fontWeight: '800', marginBottom: '20px', textTransform: 'uppercase' }}>
-            VỀ CHÚNG TÔI - LAPTOPCARE
+            VỀ CHÚNG TÔI - LAPTOP PHÚ QUỐC
           </h1>
           <p style={{ fontSize: '1.25rem', opacity: '0.9', lineHeight: '1.6', maxWidth: '800px', margin: '0 auto' }}>
-            Hơn 10 năm kinh nghiệm trong lĩnh vực sửa chữa Laptop chuyên nghiệp tại TP. Hồ Chí Minh.
+            Hơn 10 năm kinh nghiệm trong lĩnh vực sửa chữa Laptop chuyên nghiệp tại Phú Quốc.
             Chúng tôi cam kết đem lại giải pháp tốt nhất, nhanh nhất và an tâm nhất cho mọi khách hàng.
           </p>
         </div>
@@ -82,7 +82,7 @@ const LienHe = () => {
                 </div>
                 <div>
                   <h4 style={{ fontSize: '1.1rem', fontWeight: '800', marginBottom: '5px' }}>Trụ sở chính</h4>
-                  <p style={{ color: '#666', lineHeight: '1.6' }}>Số 102 Đường Cách Mạng Tháng 8, Phường 15, Quận 10, TP. Hồ Chí Minh</p>
+                  <p style={{ color: '#666', lineHeight: '1.6' }}>41C Lý Thường Kiệt, Dương Đông, Phú Quốc</p>
                 </div>
               </div>
 
@@ -92,7 +92,7 @@ const LienHe = () => {
                 </div>
                 <div>
                   <h4 style={{ fontSize: '1.1rem', fontWeight: '800', marginBottom: '5px' }}>Điện thoại & Hotline</h4>
-                  <p style={{ color: '#0b5e9d', fontWeight: '800', fontSize: '1.2rem' }}>09xx.xxx.xxx - 028.xxxx.xxxx</p>
+                  <p style={{ color: '#0b5e9d', fontWeight: '800', fontSize: '1.2rem' }}>0815 774 668 - Zalo: 0815 774 668</p>
                 </div>
               </div>
 
@@ -102,8 +102,9 @@ const LienHe = () => {
                 </div>
                 <div>
                   <h4 style={{ fontSize: '1.1rem', fontWeight: '800', marginBottom: '5px' }}>Giờ phục vụ</h4>
-                  <p style={{ color: '#666' }}>Thứ Hai - Thứ Bảy: 8:00 - 19:30</p>
-                  <p style={{ color: '#666' }}>Chủ Nhật: 8:30 - 17:30</p>
+                  <p style={{ color: '#666' }}>Sáng: 8h - 12h</p>
+                  <p style={{ color: '#666' }}>Chiều: 14h - 19h</p>
+                  <p style={{ color: '#666' }}>Tất cả các ngày trong tuần</p>
                 </div>
               </div>
             </div>
@@ -111,7 +112,7 @@ const LienHe = () => {
             <div style={{ marginTop: '40px', padding: '30px', backgroundColor: '#eff6ff', borderRadius: '4px', border: '1px solid #dbeafe' }}>
               <h4 style={{ fontWeight: '800', marginBottom: '10px', color: '#0b5e9d' }}>Hỗ trợ tận nơi?</h4>
               <p style={{ fontSize: '0.95rem', color: '#1e40af', lineHeight: '1.6' }}>
-                Kỹ thuật viên của chúng tôi có thể đến tận nhà hoặc văn phòng của bạn tại khu vực TP.HCM trong vòng 30-45 phút.
+                Kỹ thuật viên của chúng tôi có thể đến tận nhà hoặc văn phòng của bạn tại khu vực Phú Quốc nhanh nhất.
               </p>
             </div>
           </div>
@@ -154,13 +155,13 @@ const LienHe = () => {
         {/* 4. MAP */}
         <div style={{ marginTop: '80px', height: '400px', backgroundColor: '#eee', borderRadius: '4px', overflow: 'hidden', border: '1px solid #e5e7eb' }}>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4602324283146!2d106.66521571474883!3d10.776019392321855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f205c065f49%3A0xc3f606349944d15d!2zMTAyIMSQLiBDw6FjaCBN4bqhbmcgVGjDoW5nIDgsIFBoxrDhu51uZyAxNSwgUXXhuq1uIDEwLCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmg!5e0!3m2!1svi!2s!4v1617439123456!5m2!1svi!2s"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125646.65348812896!2d103.86406068069593!3d10.224602600000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a78b8eb1bb774f%3A0x46f1fc0b2b010ac9!2zTGFwdG9wIFBow7ogUXXhu5Fj!5e0!3m2!1svi!2s!4v1775486474591!5m2!1svi!2s"
             width="100%"
             height="100%"
             style={{ border: 0 }}
             allowFullScreen=""
             loading="lazy"
-            title="LaptopCare"
+            title="LAPTOP PHÚ QUỐC"
           ></iframe>
         </div>
 

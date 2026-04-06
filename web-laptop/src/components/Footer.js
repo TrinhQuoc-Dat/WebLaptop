@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="footer-col">
             <h4>Thông tin công ty</h4>
             <p style={{ marginBottom: '1rem', color: 'rgba(255,255,255,0.7)', fontSize: '0.95rem', lineHeight: 1.6 }}>
-              LaptopCare chuyên cung cấp các dịch vụ sửa chữa và bảo dưỡng laptop uy tín, chất lượng tại Việt Nam.
+              LAPTOP PHÚ QUỐC chuyên cung cấp các dịch vụ sửa chữa và bảo dưỡng laptop uy tín, chất lượng tại Việt Nam.
             </p>
           </div>
           <div className="footer-col">
@@ -34,10 +34,10 @@ const Footer = () => {
             <h4>Liên hệ</h4>
             <ul style={{ gap: '1rem' }}>
               <li style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                <MapPin size={18} /> 123 Đường Điện Biên Phủ, Quận 1, TP. HCM
+                <MapPin size={18} /> 41C Lý Thường Kiệt, Dương Đông, Phú Quốc
               </li>
               <li style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                <Phone size={18} /> Hotline: 1900 6868
+                <Phone size={18} /> Hotline: 0815 774 668
               </li>
               <li style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
                 <Mail size={18} /> cskh@laptopcare.vn
@@ -46,7 +46,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} LaptopCare. Tất cả quyền được bảo lưu.</p>
+          <p>&copy; {new Date().getFullYear()} LAPTOP PHÚ QUỐC. Tất cả quyền được bảo lưu.</p>
         </div>
       </div>
     </footer>

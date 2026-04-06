@@ -6,8 +6,8 @@ const Hero = () => {
     <section className="hero">
       <div className="hero-overlay"></div>
       <div className="hero-content container">
-        <h1 className="hero-title">SỬA CHỮA LAPTOP UY TÍN</h1>
-        <p className="hero-desc">Kết nối giải pháp - Phục hồi sức mạnh. Dịch vụ sửa chữa phần cứng và phần mềm chuyên nghiệp, nhanh gọn, bảo hành dài hạn.</p>
+        <h1 className="hero-title">Laptop Phú Quốc – Chuyên Sửa Mainboard Laptop, MacBook, PC, Card VGA</h1>
+        <p className="hero-desc">Sửa chữa Mainboard – Uy tín tại Phú Quốc.</p>
         <Link to="/lien-he">
           <button className="btn-primary" style={{ padding: '15px 32px', fontSize: '1.1rem' }}>Tư vấn ngay</button>
         </Link>
