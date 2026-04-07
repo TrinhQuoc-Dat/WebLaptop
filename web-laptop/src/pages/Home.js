@@ -7,9 +7,10 @@ import {
   warningSigns,
   processSteps,
   commitments,
-  arrowButtons,
   supportItems
 } from '../data/homeData';
+
+import { ChevronRight } from 'lucide-react';
 
 const Home = () => {
   return (
@@ -109,31 +110,89 @@ const Home = () => {
       </section>
 
       {/* 5. QUY TRÌNH SỬA CHỮA */}
-      <section style={{ backgroundColor: '#fff', padding: '5rem 0' }}>
+      <section style={{ backgroundColor: '#f8fafc', padding: '5rem 0' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <h2 className="section-title" style={{ color: '#d32f2f', textTransform: 'uppercase', fontSize: '2rem', marginBottom: '10px' }}>QUY TRÌNH SỬA CHỮA</h2>
             <div style={{ width: '60px', height: '4px', backgroundColor: '#d32f2f', margin: '0 auto' }}></div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '30px' }}>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+            flexWrap: 'wrap',
+            gap: '10px'
+          }}>
             {processSteps.map((step, idx) => (
-              <div key={idx} style={{ padding: '30px', textAlign: 'center', position: 'relative' }}>
+              <React.Fragment key={idx}>
                 <div style={{
-                  width: '60px', height: '60px',
-                  backgroundColor: '#0b5e9d', color: '#fff',
-                  borderRadius: '50%', margin: '0 auto 20px',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  zIndex: 2, position: 'relative'
+                  flex: '1 1 200px',
+                  padding: '20px',
+                  textAlign: 'center',
+                  position: 'relative',
+                  maxWidth: '260px'
                 }}>
-                  {step.icon}
+                  <div style={{
+                    width: '80px', height: '80px',
+                    backgroundColor: '#0b5e9d', color: '#fff',
+                    borderRadius: '50%', margin: '0 auto 25px',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    zIndex: 2, position: 'relative',
+                    boxShadow: '0 10px 15px -3px rgba(11, 94, 157, 0.3)',
+                    border: '4px solid #fff'
+                  }}>
+                    {step.icon}
+                    <div style={{
+                      position: 'absolute',
+                      top: '-10px',
+                      right: '-10px',
+                      width: '28px',
+                      height: '28px',
+                      backgroundColor: '#ef4444',
+                      borderRadius: '50%',
+                      fontSize: '0.8rem',
+                      fontWeight: 'bold',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      border: '2px solid #fff'
+                    }}>
+                      {idx + 1}
+                    </div>
+                  </div>
+                  <h4 style={{ fontSize: '1.15rem', fontWeight: 'bold', marginBottom: '12px', color: '#1a365d' }}>{step.title}</h4>
+                  <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.6' }}>{step.desc}</p>
                 </div>
-                <h4 style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '10px' }}>{step.title}</h4>
-                <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.5' }}>{step.desc}</p>
-              </div>
+                {idx < processSteps.length - 1 && (
+                  <div style={{
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '45px 0',
+                    color: '#cbd5e1',
+                    display: 'none' // Controlled by CSS below
+                  }} className="process-arrow">
+                    <ChevronRight size={30} />
+                  </div>
+                )}
+              </React.Fragment>
             ))}
           </div>
         </div>
+
+        <style>{`
+          .process-arrow {
+            display: flex !important;
+          }
+          @media (max-width: 1024px) {
+            .process-arrow {
+              display: none !important;
+            }
+            .container > div {
+              justify-content: center !important;
+            }
+          }
+        `}</style>
       </section>
 
       {/* Blue Support Bar (Restored) */}
