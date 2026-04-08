@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ScrollToTopBtn from './components/ScrollToTopBtn';
 import Home from './pages/Home';
 import BangGia from './pages/BangGia';
 import DichVuSuaChua from './pages/DichVuSuaChua';
@@ -26,6 +27,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <ScrollToTopBtn />
       </div>
     </Router>
   );

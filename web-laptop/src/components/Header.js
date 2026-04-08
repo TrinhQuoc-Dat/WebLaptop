@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { Menu, X, Wrench } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -12,7 +12,7 @@ const Header = () => {
     <header className="header">
       <div className="container header-container">
         <Link to="/" className="logo d-flex align-items-center" style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-          <Wrench size={24} />
+          <img src="/logo.jpg" alt="Laptop Phú Quốc - Sửa chữa laptop uy tín" style={{ height: '40px', width: 'auto', borderRadius: '4px' }} />
           <span>LAPTOP PHÚ QUỐC</span>
         </Link>
         
