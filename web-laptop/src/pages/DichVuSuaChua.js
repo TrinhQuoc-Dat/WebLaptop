@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { RotateCcw, ShieldCheck, Wrench, CreditCard, MessageCircle } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 
 const DichVuSuaChua = () => {
   return (
@@ -322,38 +322,6 @@ const DichVuSuaChua = () => {
             </div>
           </div>
 
-        </div>
-      </section>
-
-      <section style={{ backgroundColor: '#0ea5e9', padding: '30px 20px', color: '#fff' }}>
-        <div className="container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', textAlign: 'center' }}>
-
-            <div style={{ padding: '10px' }}>
-              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}><RotateCcw size={36} /></div>
-              <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '5px', textTransform: 'uppercase' }}>Dùng Thử 7 Ngày</h4>
-              <p style={{ fontSize: '0.9rem', color: '#e0f2fe' }}>Miễn phí trải nghiệm</p>
-            </div>
-
-            <div style={{ padding: '10px' }}>
-              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}><ShieldCheck size={36} /></div>
-              <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '5px', textTransform: 'uppercase' }}>1 Đổi 1 Trong 30 Ngày</h4>
-              <p style={{ fontSize: '0.9rem', color: '#e0f2fe' }}>Chỉ có tại website</p>
-            </div>
-
-            <div style={{ padding: '10px' }}>
-              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}><Wrench size={36} /></div>
-              <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '5px', textTransform: 'uppercase' }}>Bảo Hành 12 Tháng</h4>
-              <p style={{ fontSize: '0.9rem', color: '#e0f2fe' }}>An tâm sử dụng</p>
-            </div>
-
-            <div style={{ padding: '10px' }}>
-              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}><CreditCard size={36} /></div>
-              <h4 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '5px', textTransform: 'uppercase' }}>Mua Trả Góp</h4>
-              <p style={{ fontSize: '0.9rem', color: '#e0f2fe' }}>Chính sách hỗ trợ</p>
-            </div>
-
-          </div>
         </div>
       </section>
     </div>

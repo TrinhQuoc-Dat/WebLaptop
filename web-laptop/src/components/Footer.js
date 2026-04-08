@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -38,9 +38,6 @@ const Footer = () => {
               </li>
               <li style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
                 <Phone size={18} /> Hotline: 0815 774 668
-              </li>
-              <li style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                <Mail size={18} /> cskh@laptopcare.vn
               </li>
             </ul>
           </div>
