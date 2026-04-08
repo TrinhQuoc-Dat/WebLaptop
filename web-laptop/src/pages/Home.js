@@ -16,8 +16,6 @@ const Home = () => {
   return (
     <div className="home-page">
       <Hero />
-
-      {/* 2. DỊCH VỤ CHÍNH */}
       <section className="services-section" style={{ backgroundColor: '#fff', padding: '5rem 0' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
@@ -170,7 +168,7 @@ const Home = () => {
                     justifyContent: 'center',
                     padding: '45px 0',
                     color: '#cbd5e1',
-                    display: 'none' // Controlled by CSS below
+                    display: 'none'
                   }} className="process-arrow">
                     <ChevronRight size={30} />
                   </div>
@@ -195,7 +193,6 @@ const Home = () => {
         `}</style>
       </section>
 
-      {/* Blue Support Bar (Restored) */}
       <section className="support-bar" style={{ backgroundColor: '#0ea5e9', color: '#fff', padding: '25px 0' }}>
         <div className="container support-grid">
           {supportItems.map((item, idx) => (
@@ -225,11 +222,34 @@ const Home = () => {
             ))}
           </div>
 
-          {/* Integrated SEO Content */}
           <div style={{ marginTop: '4rem', padding: '40px', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: '8px', fontSize: '0.95rem', color: 'rgba(255,255,255,0.7)', lineHeight: '1.8', border: '1px solid rgba(255,255,255,0.1)' }}>
-            <h3 style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '15px', color: '#fff' }}>Hệ thống sửa chữa laptop, mainboard uy tín hàng đầu Đảo Ngọc</h3>
-            <p style={{ marginBottom: '15px' }}>Trung tâm Laptop Phú Quốc tự hào mang đến giải pháp sửa chữa laptop chuyên nghiệp lấy liền tại chỗ. Chúng tôi chuyên xử lý các ca lỗi phần cứng khó nhất như mất nguồn mainboard, sập nguồn đột ngột, máy dính nước hoặc hư hỏng linh kiện trên các dòng máy Dell, HP, Asus, Acer và đặc biệt là MacBook chuyên biệt.</p>
-            <p>Với kho linh kiện đầy đủ từ màn hình, bàn phím đến pin chính hãng, chúng tôi cam kết bảo hành dài hạn từ 6-36 tháng, giúp quý khách hoàn toàn an tâm khi sử dụng dịch vụ tại cửa hàng.</p>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '15px', color: '#fff' }}>
+              Hệ thống sửa chữa laptop, mainboard uy tín hàng đầu Đảo Ngọc
+            </h3>
+
+            <p style={{ marginBottom: '15px' }}>
+              Trung tâm Laptop Phú Quốc chuyên cung cấp dịch vụ sửa chữa laptop chuyên nghiệp, lấy liền tại chỗ với quy trình rõ ràng và minh bạch. Chúng tôi tiếp nhận và xử lý đa dạng các lỗi từ cơ bản đến phức tạp như laptop không lên nguồn, sập nguồn đột ngột, lỗi mainboard, lỗi chip, hư màn hình, chai pin, lỗi bàn phím, laptop bị vào nước hoặc hoạt động không ổn định.
+            </p>
+
+            <p style={{ marginBottom: '15px' }}>
+              Với đội ngũ kỹ thuật viên giàu kinh nghiệm, được đào tạo chuyên sâu, chúng tôi có khả năng sửa chữa trên nhiều dòng máy khác nhau như Dell, HP, Asus, Acer, Lenovo và đặc biệt là MacBook với các lỗi chuyên sâu về main, IC nguồn, VGA và chipset. Mỗi thiết bị trước khi sửa đều được kiểm tra kỹ lưỡng để xác định đúng nguyên nhân, từ đó đưa ra phương án tối ưu nhất giúp tiết kiệm chi phí cho khách hàng.
+            </p>
+
+            <p style={{ marginBottom: '15px' }}>
+              Trung tâm cam kết sử dụng linh kiện chính hãng, chất lượng cao, có nguồn gốc rõ ràng. Kho linh kiện luôn sẵn sàng từ màn hình, pin, bàn phím đến các linh kiện mainboard giúp rút ngắn thời gian sửa chữa và đảm bảo độ bền sau khi thay thế. Tất cả dịch vụ đều được báo giá trước, không phát sinh chi phí ngoài dự kiến.
+            </p>
+
+            <p style={{ marginBottom: '15px' }}>
+              Bên cạnh đó, chúng tôi còn cung cấp các dịch vụ bảo trì, vệ sinh laptop định kỳ, thay keo tản nhiệt, nâng cấp SSD, RAM giúp máy hoạt động mượt mà, ổn định và kéo dài tuổi thọ. Đây là giải pháp hiệu quả giúp hạn chế hư hỏng và tiết kiệm chi phí sửa chữa về lâu dài.
+            </p>
+
+            <p style={{ marginBottom: '15px' }}>
+              Chính sách bảo hành rõ ràng từ 6 đến 36 tháng tùy theo dịch vụ và linh kiện thay thế. Khách hàng sẽ được hỗ trợ kiểm tra miễn phí, tư vấn tận tình và hướng dẫn sử dụng sau khi sửa chữa để tránh lỗi lặp lại.
+            </p>
+
+            <p>
+              Nếu bạn đang tìm kiếm một địa chỉ sửa laptop uy tín tại Phú Quốc, nhanh chóng, giá tốt và chuyên xử lý các lỗi khó, Trung tâm Laptop Phú Quốc chính là lựa chọn đáng tin cậy dành cho bạn. Chúng tôi luôn đặt chất lượng dịch vụ và sự hài lòng của khách hàng lên hàng đầu.
+            </p>
           </div>
         </div>
       </section>
