@@ -1,5 +1,6 @@
 import React from 'react';
-import { RotateCcw, ShieldCheck, Wrench, CreditCard } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { RotateCcw, ShieldCheck, Wrench, CreditCard, MessageCircle } from 'lucide-react';
 
 const DichVuSuaChua = () => {
   return (
@@ -49,10 +50,10 @@ const DichVuSuaChua = () => {
               { title: 'Sửa Nguồn, Mainboard', img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
               { title: 'Vệ Sinh Laptop', img: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' }
             ].map((svc, idx) => (
-              <div key={idx} style={{ backgroundColor: '#fff', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 4px 6px rgba(0,0,0,0.05)', textAlign: 'center', transition: 'transform 0.3s' }}>
+              <Link key={idx} to="/lien-he" style={{ textDecoration: 'none', display: 'block', backgroundColor: '#fff', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 4px 6px rgba(0,0,0,0.05)', textAlign: 'center', transition: 'transform 0.3s', cursor: 'pointer' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
                 <img src={svc.img} alt={svc.title} style={{ width: '100%', height: '180px', objectFit: 'cover' }} />
                 <h3 style={{ padding: '20px 10px', fontSize: '1.2rem', color: '#333', margin: 0 }}>{svc.title}</h3>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -61,18 +62,18 @@ const DichVuSuaChua = () => {
       <section style={{ padding: '40px 20px', backgroundColor: '#fff' }}>
         <div className="container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
-            <div style={{ position: 'relative', borderRadius: '8px', overflow: 'hidden', height: '200px', backgroundImage: 'url("https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            <Link to="/lien-he" style={{ position: 'relative', borderRadius: '8px', overflow: 'hidden', height: '200px', backgroundImage: 'url("https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80")', backgroundSize: 'cover', backgroundPosition: 'center', display: 'block', textDecoration: 'none' }}>
               <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.6)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', padding: '30px' }}>
                 <h3 style={{ color: '#fff', fontSize: '1.8rem', margin: '0 0 10px 0' }}>Sửa Bàn Phím Laptop</h3>
-                <p style={{ color: '#ffeb3b', fontSize: '1.4rem', fontWeight: 'bold', margin: 0 }}>GIẢM NGAY 50%</p>
+                <p style={{ color: '#ffeb3b', fontSize: '1.4rem', fontWeight: 'bold', margin: 0 }}>GIẢM NGAY 30%</p>
               </div>
-            </div>
-            <div style={{ position: 'relative', borderRadius: '8px', overflow: 'hidden', height: '200px', backgroundImage: 'url("https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            </Link>
+            <Link to="/lien-he" style={{ position: 'relative', borderRadius: '8px', overflow: 'hidden', height: '200px', backgroundImage: 'url("https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80")', backgroundSize: 'cover', backgroundPosition: 'center', display: 'block', textDecoration: 'none' }}>
               <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(14, 165, 233, 0.7)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', padding: '30px' }}>
                 <h3 style={{ color: '#fff', fontSize: '1.8rem', margin: '0 0 10px 0' }}>Sửa Mainboard Máy Tính</h3>
                 <p style={{ color: '#ffeb3b', fontSize: '1.4rem', fontWeight: 'bold', margin: 0 }}>GIẢM ĐẾN 10%</p>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -165,9 +166,12 @@ const DichVuSuaChua = () => {
                   </tbody>
                 </table>
                 <h4 style={{ fontWeight: 'bold', marginBottom: '5px' }}>Lưu ý:</h4>
-                <ul style={{ listStyleType: 'disc', paddingLeft: '20px', color: '#555' }}>
+                <ul style={{ listStyleType: 'disc', paddingLeft: '20px', color: '#555', marginBottom: '15px' }}>
                   <li>Không cố gắng cắm lại sạc liên tục để tránh chập mạch nặng hơn.</li>
                 </ul>
+                <Link to="/lien-he" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', backgroundColor: '#0ea5e9', color: '#fff', padding: '10px 18px', borderRadius: '4px', fontWeight: 'bold', textDecoration: 'none' }}>
+                  <MessageCircle size={18} /> LIÊN HỆ SỬA CHỮA NGAY
+                </Link>
               </div>
               <div style={{ flex: '1 1 300px' }}>
                 <img src="https://res.cloudinary.com/degewiqpj/image/upload/v1775146180/matnguonlaptop-9624_xavwie.jpg" alt="Sửa nguồn laptop" style={{ width: '100%', borderRadius: '8px', objectFit: 'cover' }} />
@@ -198,9 +202,12 @@ const DichVuSuaChua = () => {
                   </tbody>
                 </table>
                 <h4 style={{ fontWeight: 'bold', marginBottom: '5px' }}>Lưu ý:</h4>
-                <ul style={{ listStyleType: 'disc', paddingLeft: '20px', color: '#555' }}>
+                <ul style={{ listStyleType: 'disc', paddingLeft: '20px', color: '#555', marginBottom: '15px' }}>
                   <li>Nên tiến hành xả pin (dùng đến 15% rồi sạc đầy) vài lần đầu sau khi châm pin mới.</li>
                 </ul>
+                <Link to="/lien-he" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', backgroundColor: '#0ea5e9', color: '#fff', padding: '10px 18px', borderRadius: '4px', fontWeight: 'bold', textDecoration: 'none' }}>
+                  <MessageCircle size={18} /> LIÊN HỆ SỬA CHỮA NGAY
+                </Link>
               </div>
               <div style={{ flex: '1 1 300px' }}>
                 <img src="https://res.cloudinary.com/degewiqpj/image/upload/v1775146180/dich-vu-thay-pin-laptop-thay-pin-may-tinh-xach-tay-eyihbk9f_rgk0fe.jpg" alt="Thay pin laptop" style={{ width: '100%', borderRadius: '8px', objectFit: 'cover' }} />
@@ -231,9 +238,12 @@ const DichVuSuaChua = () => {
                   </tbody>
                 </table>
                 <h4 style={{ fontWeight: 'bold', marginBottom: '5px' }}>Lưu ý:</h4>
-                <ul style={{ listStyleType: 'disc', paddingLeft: '20px', color: '#555' }}>
+                <ul style={{ listStyleType: 'disc', paddingLeft: '20px', color: '#555', marginBottom: '15px' }}>
                   <li>Khi gập mở, nên cầm chính giữa viền màn hình thay vì gập góc 1 bên.</li>
                 </ul>
+                <Link to="/lien-he" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', backgroundColor: '#0ea5e9', color: '#fff', padding: '10px 18px', borderRadius: '4px', fontWeight: 'bold', textDecoration: 'none' }}>
+                  <MessageCircle size={18} /> LIÊN HỆ SỬA CHỮA NGAY
+                </Link>
               </div>
               <div style={{ flex: '1 1 300px' }}>
                 <img src="https://res.cloudinary.com/degewiqpj/image/upload/v1775146180/gaybanlelaptop-c48d_b9v4jq.jpg" alt="Thay bản lề laptop" style={{ width: '100%', borderRadius: '8px', objectFit: 'cover' }} />
@@ -264,9 +274,12 @@ const DichVuSuaChua = () => {
                   </tbody>
                 </table>
                 <h4 style={{ fontWeight: 'bold', marginBottom: '5px' }}>Lưu ý:</h4>
-                <ul style={{ listStyleType: 'disc', paddingLeft: '20px', color: '#555' }}>
+                <ul style={{ listStyleType: 'disc', paddingLeft: '20px', color: '#555', marginBottom: '15px' }}>
                   <li>Dán cường lực (nếu là mặt kính cảm ứng) hoặc chú ý các vật cọ xát trực tiếp.</li>
                 </ul>
+                <Link to="/lien-he" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', backgroundColor: '#0ea5e9', color: '#fff', padding: '10px 18px', borderRadius: '4px', fontWeight: 'bold', textDecoration: 'none' }}>
+                  <MessageCircle size={18} /> LIÊN HỆ SỬA CHỮA NGAY
+                </Link>
               </div>
               <div style={{ flex: '1 1 300px' }}>
                 <img src="https://res.cloudinary.com/degewiqpj/image/upload/v1775146179/thay-man-hinh-laptop-3_jezjit.jpg" alt="Thay màn hình laptop" style={{ width: '100%', borderRadius: '8px', objectFit: 'cover' }} />

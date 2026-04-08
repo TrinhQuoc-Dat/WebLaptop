@@ -218,6 +218,15 @@ ul {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  transition: color 0.2s;
+}
+
+.service-info a:hover .service-title {
+  color: var(--primary-color);
+}
+
+.service-info a:active .service-title {
+  color: var(--primary-hover);
 }
 
 .service-desc {
