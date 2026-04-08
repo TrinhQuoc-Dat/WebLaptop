@@ -77,7 +77,6 @@ const DichVuSuaChua = () => {
         </div>
       </section>
 
-      {/* BẢNG KIỂM TRA SỬA CHỮA */}
       <section style={{ padding: '60px 20px', backgroundColor: '#fff' }}>
         <div className="container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <h2 style={{ textAlign: 'center', color: '#d32f2f', fontSize: '2rem', marginBottom: '30px', fontWeight: 'bold' }}>Khi nào nên đi kiểm tra, sửa chữa Laptop</h2>
@@ -142,7 +141,6 @@ const DichVuSuaChua = () => {
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '40px' }}>
 
-            {/* Lỗi 1: Sửa nguồn */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center" style={{ display: 'flex', flexWrap: 'wrap', marginBottom: '30px', backgroundColor: '#f8f9fa', padding: '20px', borderRadius: '8px' }}>
               <div style={{ flex: '1 1 300px', paddingRight: '20px' }}>
                 <h3 style={{ color: '#d32f2f', fontSize: '1.5rem', marginBottom: '15px' }}>1. Sửa nguồn laptop</h3>
@@ -176,7 +174,6 @@ const DichVuSuaChua = () => {
               </div>
             </div>
 
-            {/* Lỗi 2: Thay pin */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center" style={{ display: 'flex', flexWrap: 'wrap', marginBottom: '30px', backgroundColor: '#f8f9fa', padding: '20px', borderRadius: '8px' }}>
               <div style={{ flex: '1 1 300px', paddingRight: '20px' }}>
                 <h3 style={{ color: '#d32f2f', fontSize: '1.5rem', marginBottom: '15px' }}>2. Thay pin laptop</h3>
@@ -210,7 +207,6 @@ const DichVuSuaChua = () => {
               </div>
             </div>
 
-            {/* Lỗi 3: Thay bản lề */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center" style={{ display: 'flex', flexWrap: 'wrap', marginBottom: '30px', backgroundColor: '#f8f9fa', padding: '20px', borderRadius: '8px' }}>
               <div style={{ flex: '1 1 300px', paddingRight: '20px' }}>
                 <h3 style={{ color: '#d32f2f', fontSize: '1.5rem', marginBottom: '15px' }}>3. Thay bản lề laptop</h3>
@@ -244,7 +240,6 @@ const DichVuSuaChua = () => {
               </div>
             </div>
 
-            {/* Lỗi 4: Thay màn hình */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center" style={{ display: 'flex', flexWrap: 'wrap', backgroundColor: '#f8f9fa', padding: '20px', borderRadius: '8px' }}>
               <div style={{ flex: '1 1 300px', paddingRight: '20px' }}>
                 <h3 style={{ color: '#d32f2f', fontSize: '1.5rem', marginBottom: '15px' }}>4. Thay màn hình laptop</h3>
@@ -286,7 +281,6 @@ const DichVuSuaChua = () => {
         <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', color: '#444', lineHeight: '1.8' }}>
           <h2 style={{ textAlign: 'center', color: '#333', fontSize: '2rem', marginBottom: '40px', fontWeight: 'bold' }}>Cách dùng Laptop như thế nào để tránh hư hỏng</h2>
 
-          {/* Item 1 */}
           <div style={{ marginBottom: '40px' }}>
             <h3 style={{ fontSize: '1.4rem', color: '#333', marginBottom: '15px', fontWeight: 'bold' }}>1. Sạc PIN đúng cách:</h3>
             <p style={{ marginBottom: '20px', fontSize: '1rem' }}>
@@ -297,7 +291,6 @@ const DichVuSuaChua = () => {
             </div>
           </div>
 
-          {/* Item 2 */}
           <div style={{ marginBottom: '40px' }}>
             <h3 style={{ fontSize: '1.4rem', color: '#333', marginBottom: '15px', fontWeight: 'bold' }}>2. Vệ sinh Laptop định kỳ:</h3>
             <p style={{ marginBottom: '15px', fontSize: '1rem' }}>
@@ -319,7 +312,6 @@ const DichVuSuaChua = () => {
         </div>
       </section>
 
-      {/* THANH NGANG CUỐI TRANG */}
       <section style={{ backgroundColor: '#0ea5e9', padding: '30px 20px', color: '#fff' }}>
         <div className="container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', textAlign: 'center' }}>
@@ -351,7 +343,6 @@ const DichVuSuaChua = () => {
           </div>
         </div>
       </section>
-
     </div>
   );
 };
