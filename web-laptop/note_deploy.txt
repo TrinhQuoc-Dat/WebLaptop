@@ -1,1 +1,8 @@
 ssh root@157.10.52.96
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py seed_data
+python manage.py collectstatic --noinput
+
+sudo systemctl restart gunicorn
