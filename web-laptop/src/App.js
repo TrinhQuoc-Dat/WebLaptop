@@ -22,7 +22,7 @@ function App() {
             <Route path="/bang-gia" element={<BangGia />} />
             <Route path="/dich-vu" element={<DichVuSuaChua />} />
             <Route path="/phan-mem" element={<PhanMem />} />
-            <Route path="/phan-mem/:id" element={<PhanMemDetail />} />
+            <Route path="/phan-mem/:slug" element={<PhanMemDetail />} />
             <Route path="/lien-he" element={<LienHe />} />
           </Routes>
         </main>

@@ -1,18 +1,56 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Hero from '../components/Hero';
 import ServiceCard from '../components/ServiceCard';
 import {
-  mainServices,
+  mainServices as fallbackServices,
   strengths,
   warningSigns,
   processSteps,
   commitments,
   supportItems
 } from '../data/homeData';
+import { getServices, getMediaUrl } from '../services/api';
 
 import { ChevronRight } from 'lucide-react';
 
 const Home = () => {
+  // ─── Fetch dịch vụ chính từ API ───
+  const [services, setServices] = useState([]);
+  const [servicesLoaded, setServicesLoaded] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function fetchServices() {
+      try {
+        const data = await getServices();
+        if (!cancelled) {
+          // Map API fields → ServiceCard props (image, title, desc)
+          const mapped = data.map(svc => ({
+            id: svc.id,
+            image: getMediaUrl(svc.image),
+            title: svc.title,
+            desc: svc.description,
+          }));
+          setServices(mapped);
+        }
+      } catch (err) {
+        console.warn('[Home] API services error, dùng data cục bộ:', err.message);
+        if (!cancelled) {
+          setServices(fallbackServices);
+        }
+      } finally {
+        if (!cancelled) setServicesLoaded(true);
+      }
+    }
+
+    fetchServices();
+    return () => { cancelled = true; };
+  }, []);
+
+  // Dùng fallback nếu chưa load xong hoặc API trả rỗng
+  const displayServices = services.length > 0 ? services : fallbackServices;
+
   return (
     <div className="home-page">
       <Hero />
@@ -23,7 +61,7 @@ const Home = () => {
             <div style={{ width: '60px', height: '4px', backgroundColor: '#d32f2f', margin: '0 auto' }}></div>
           </div>
           <div className="services-grid">
-            {mainServices.map((svc) => (
+            {displayServices.map((svc) => (
               <ServiceCard key={svc.id} {...svc} />
             ))}
           </div>

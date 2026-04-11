@@ -1,9 +1,61 @@
-import { Phone, MapPin, Clock, Send, ShieldCheck, Award, Users } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Phone, MapPin, Clock, Send, ShieldCheck, Award, Users, CheckCircle, Loader } from 'lucide-react';
+import { submitContact, getSiteConfig } from '../services/api';
 
 const LienHe = () => {
-  const handleSubmit = (e) => {
+  const [formData, setFormData] = useState({
+    full_name: '',
+    phone: '',
+    message: '',
+  });
+  const [submitState, setSubmitState] = useState('idle'); // idle | loading | success | error
+  const [errorMsg, setErrorMsg] = useState('');
+
+  // ─── Fetch site config (phone, address, giờ mở cửa) ───
+  const [siteConfig, setSiteConfig] = useState(null);
+
+  useEffect(() => {
+    async function fetchConfig() {
+      try {
+        const data = await getSiteConfig();
+        setSiteConfig(data);
+      } catch (err) {
+        console.warn('[LienHe] Không tải được cấu hình site:', err.message);
+      }
+    }
+    fetchConfig();
+  }, []);
+
+  // ─── Helper: lấy thông tin từ config hoặc fallback ───
+  const shopPhone = siteConfig?.phone || '0815 774 668';
+  const shopZalo = siteConfig?.zalo || '0815 774 668';
+  const shopAddress = siteConfig?.address || '41C Lý Thường Kiệt, Dương Đông, Phú Quốc';
+  const morningHours = siteConfig?.morning_hours || '8h - 12h';
+  const afternoonHours = siteConfig?.afternoon_hours || '14h - 19h';
+  const workingDays = siteConfig?.working_days || 'Tất cả các ngày trong tuần';
+  const mapUrl = siteConfig?.google_map_embed || 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125646.65348812896!2d103.86406068069593!3d10.224602600000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a78b8eb1bb774f%3A0x46f1fc0b2b010ac9!2zTGFwdG9wIFBow7ogUXXhu5Fj!5e0!3m2!1svi!2s!4v1775486474591!5m2!1svi!2s';
+
+  const handleChange = (e) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.');
+    setSubmitState('loading');
+    setErrorMsg('');
+
+    try {
+      await submitContact(formData);
+      setSubmitState('success');
+      setFormData({ full_name: '', phone: '', message: '' });
+    } catch (err) {
+      console.error('[LienHe] Submit error:', err);
+      setSubmitState('error');
+      setErrorMsg(err.message || 'Gửi yêu cầu thất bại. Vui lòng thử lại.');
+    }
   };
 
   return (
@@ -81,7 +133,7 @@ const LienHe = () => {
                 </div>
                 <div>
                   <h4 style={{ fontSize: '1.1rem', fontWeight: '800', marginBottom: '5px' }}>Trụ sở chính</h4>
-                  <p style={{ color: '#666', lineHeight: '1.6' }}>41C Lý Thường Kiệt, Dương Đông, Phú Quốc</p>
+                  <p style={{ color: '#666', lineHeight: '1.6' }}>{shopAddress}</p>
                 </div>
               </div>
 
@@ -91,7 +143,7 @@ const LienHe = () => {
                 </div>
                 <div>
                   <h4 style={{ fontSize: '1.1rem', fontWeight: '800', marginBottom: '5px' }}>Điện thoại & Hotline</h4>
-                  <p style={{ color: '#0b5e9d', fontWeight: '800', fontSize: '1.2rem' }}>0815 774 668 - Zalo: 0815 774 668</p>
+                  <p style={{ color: '#0b5e9d', fontWeight: '800', fontSize: '1.2rem' }}>{shopPhone} - Zalo: {shopZalo}</p>
                 </div>
               </div>
 
@@ -101,9 +153,9 @@ const LienHe = () => {
                 </div>
                 <div>
                   <h4 style={{ fontSize: '1.1rem', fontWeight: '800', marginBottom: '5px' }}>Giờ phục vụ</h4>
-                  <p style={{ color: '#666' }}>Sáng: 8h - 12h</p>
-                  <p style={{ color: '#666' }}>Chiều: 14h - 19h</p>
-                  <p style={{ color: '#666' }}>Tất cả các ngày trong tuần</p>
+                  <p style={{ color: '#666' }}>Sáng: {morningHours}</p>
+                  <p style={{ color: '#666' }}>Chiều: {afternoonHours}</p>
+                  <p style={{ color: '#666' }}>{workingDays}</p>
                 </div>
               </div>
             </div>
@@ -118,43 +170,114 @@ const LienHe = () => {
 
           {/* CỘT PHẢI: Form */}
           <div style={{ backgroundColor: '#fff', padding: '40px', borderRadius: '4px', border: '1px solid #e5e7eb' }}>
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <label style={{ fontSize: '0.9rem', fontWeight: '700', color: '#374151' }}>Họ tên khách hàng *</label>
-                <input type="text" placeholder="Nhập tên" required style={{ border: '1px solid #d1d5db', padding: '12px 15px', borderRadius: '4px', outline: 'none' }} />
+            {submitState === 'success' ? (
+              <div style={{ textAlign: 'center', padding: '40px 20px' }}>
+                <CheckCircle size={60} style={{ color: '#10b981', marginBottom: '20px' }} />
+                <h3 style={{ fontSize: '1.5rem', fontWeight: '800', color: '#111', marginBottom: '10px' }}>
+                  Gửi thành công!
+                </h3>
+                <p style={{ color: '#666', lineHeight: '1.6', marginBottom: '20px' }}>
+                  Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.
+                </p>
+                <button
+                  onClick={() => setSubmitState('idle')}
+                  style={{
+                    backgroundColor: '#0b5e9d',
+                    color: '#fff',
+                    padding: '12px 25px',
+                    border: 'none',
+                    borderRadius: '4px',
+                    fontWeight: '700',
+                    cursor: 'pointer',
+                    fontFamily: 'inherit',
+                  }}
+                >
+                  Gửi yêu cầu khác
+                </button>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <label style={{ fontSize: '0.9rem', fontWeight: '700', color: '#374151' }}>Số điện thoại *</label>
-                <input type="tel" placeholder="Ví dụ: 0912xxxxxx" required style={{ border: '1px solid #d1d5db', padding: '12px 15px', borderRadius: '4px', outline: 'none' }} />
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <label style={{ fontSize: '0.9rem', fontWeight: '700', color: '#374151' }}>Nội dung cần hỗ trợ *</label>
-                <textarea rows="4" placeholder="Mô tả lỗi máy hoặc dịch vụ bạn quan tâm..." required style={{ border: '1px solid #d1d5db', padding: '12px 15px', borderRadius: '4px', outline: 'none', resize: 'none' }}></textarea>
-              </div>
-              <button type="submit" style={{
-                backgroundColor: '#0b5e9d',
-                color: '#fff',
-                padding: '15px',
-                border: 'none',
-                borderRadius: '4px',
-                fontWeight: '800',
-                fontFamily: 'inherit',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '10px',
-              }}>
-                GỬI YÊU CẦU TƯ VẤN <Send size={20} />
-              </button>
-            </form>
+            ) : (
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <label style={{ fontSize: '0.9rem', fontWeight: '700', color: '#374151' }}>Họ tên khách hàng *</label>
+                  <input
+                    type="text"
+                    name="full_name"
+                    value={formData.full_name}
+                    onChange={handleChange}
+                    placeholder="Nhập tên"
+                    required
+                    style={{ border: '1px solid #d1d5db', padding: '12px 15px', borderRadius: '4px', outline: 'none' }}
+                  />
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <label style={{ fontSize: '0.9rem', fontWeight: '700', color: '#374151' }}>Số điện thoại *</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Ví dụ: 0912xxxxxx"
+                    required
+                    style={{ border: '1px solid #d1d5db', padding: '12px 15px', borderRadius: '4px', outline: 'none' }}
+                  />
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <label style={{ fontSize: '0.9rem', fontWeight: '700', color: '#374151' }}>Nội dung cần hỗ trợ *</label>
+                  <textarea
+                    rows="4"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Mô tả lỗi máy hoặc dịch vụ bạn quan tâm..."
+                    required
+                    style={{ border: '1px solid #d1d5db', padding: '12px 15px', borderRadius: '4px', outline: 'none', resize: 'none' }}
+                  ></textarea>
+                </div>
+
+                {submitState === 'error' && (
+                  <div style={{ padding: '10px 15px', backgroundColor: '#fef2f2', borderRadius: '4px', fontSize: '0.9rem', color: '#dc2626', border: '1px solid #fecaca' }}>
+                    ❌ {errorMsg}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={submitState === 'loading'}
+                  style={{
+                    backgroundColor: submitState === 'loading' ? '#93c5fd' : '#0b5e9d',
+                    color: '#fff',
+                    padding: '15px',
+                    border: 'none',
+                    borderRadius: '4px',
+                    fontWeight: '800',
+                    fontFamily: 'inherit',
+                    cursor: submitState === 'loading' ? 'not-allowed' : 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '10px',
+                  }}
+                >
+                  {submitState === 'loading' ? (
+                    <>
+                      <Loader size={20} style={{ animation: 'spin 1s linear infinite' }} />
+                      ĐANG GỬI...
+                    </>
+                  ) : (
+                    <>
+                      GỬI YÊU CẦU TƯ VẤN <Send size={20} />
+                    </>
+                  )}
+                </button>
+              </form>
+            )}
           </div>
         </div>
 
         {/* 4. MAP */}
         <div style={{ marginTop: '80px', height: '400px', backgroundColor: '#eee', borderRadius: '4px', overflow: 'hidden', border: '1px solid #e5e7eb' }}>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125646.65348812896!2d103.86406068069593!3d10.224602600000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a78b8eb1bb774f%3A0x46f1fc0b2b010ac9!2zTGFwdG9wIFBow7ogUXXhu5Fj!5e0!3m2!1svi!2s!4v1775486474591!5m2!1svi!2s"
+            src={mapUrl}
             width="100%"
             height="100%"
             style={{ border: 0 }}
@@ -169,6 +292,7 @@ const LienHe = () => {
       <style dangerouslySetInnerHTML={{
         __html: `
         input:focus, textarea:focus { border-color: #0b5e9d !important; }
+        @keyframes spin { to { transform: rotate(360deg); } }
       `}} />
     </div>
   );

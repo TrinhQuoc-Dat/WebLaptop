@@ -1,0 +1,975 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block title %}Tạo bài viết bằng AI | {{ site_header }}{% endblock %}
+
+{% block branding %}
+{% include "unfold/helpers/site_branding.html" %}
+{% endblock %}
+
+{% block content %}
+<style>
+    /* ── BASE ── */
+    .ai-container {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+
+    .ai-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .ai-header .material-symbols-outlined {
+        font-size: 32px !important;
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .ai-header h1 {
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin: 0;
+    }
+
+    .ai-header .tag {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: #fff;
+        font-size: 0.625rem;
+        font-weight: 700;
+        padding: 0.2rem 0.5rem;
+        border-radius: 99px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    /* ── CARD ── */
+    .ai-card {
+        background: var(--body-bg, #fff);
+        border: 1px solid var(--border-color, #e5e7eb);
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .ai-card-title {
+        font-size: 0.9375rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .ai-card-title .material-symbols-outlined {
+        font-size: 20px !important;
+    }
+
+    /* ── FORM ── */
+    .ai-form-group {
+        margin-bottom: 1rem;
+    }
+
+    .ai-label {
+        display: block;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        margin-bottom: 0.375rem;
+        color: var(--text-fg, #111827);
+    }
+
+    .ai-input,
+    .ai-textarea,
+    .ai-select {
+        width: 100%;
+        padding: 0.625rem 0.875rem;
+        border: 1px solid var(--border-color, #d1d5db);
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        font-family: inherit;
+        background: var(--body-bg, #fff);
+        color: var(--text-fg, #111827);
+        transition: border-color 0.2s, box-shadow 0.2s;
+        box-sizing: border-box;
+    }
+
+    .ai-input:focus,
+    .ai-textarea:focus,
+    .ai-select:focus {
+        outline: none;
+        border-color: #6366f1;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    }
+
+    .ai-textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    .ai-textarea.tall {
+        min-height: 300px;
+    }
+
+    /* ── BUTTONS ── */
+    .ai-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.625rem 1.25rem;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-family: inherit;
+    }
+
+    .ai-btn .material-symbols-outlined {
+        font-size: 18px !important;
+    }
+
+    .ai-btn-primary {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: #fff;
+    }
+
+    .ai-btn-primary:hover {
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        transform: translateY(-1px);
+    }
+
+    .ai-btn-primary:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+    }
+
+    .ai-btn-success {
+        background: linear-gradient(135deg, #059669, #10b981);
+        color: #fff;
+    }
+
+    .ai-btn-success:hover {
+        box-shadow: 0 4px 12px rgba(5, 150, 105, 0.4);
+    }
+
+    .ai-btn-outline {
+        background: transparent;
+        border: 1px solid var(--border-color, #d1d5db);
+        color: var(--text-fg, #374151);
+    }
+
+    .ai-btn-outline:hover {
+        background: var(--body-quiet-bg, #f3f4f6);
+    }
+
+    .ai-btn-danger {
+        background: #dc2626;
+        color: #fff;
+    }
+
+    /* ── STEPS ── */
+    .ai-steps {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .ai-step {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        background: var(--body-quiet-bg, #f3f4f6);
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--text-muted, #6b7280);
+    }
+
+    .ai-step.active {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: #fff;
+    }
+
+    .ai-step .num {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        font-size: 0.75rem;
+        font-weight: 800;
+    }
+
+    .ai-step:not(.active) .num {
+        background: var(--border-color, #d1d5db);
+    }
+
+    /* ── EDITABLE LIST ── */
+    .ai-list-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .ai-list-item input {
+        flex: 1;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid var(--border-color, #d1d5db);
+        border-radius: 0.375rem;
+        font-size: 0.8125rem;
+        background: var(--body-bg, #fff);
+        color: var(--text-fg, #111827);
+    }
+
+    .ai-list-item input:focus {
+        outline: none;
+        border-color: #6366f1;
+    }
+
+    .ai-remove-btn {
+        background: none;
+        border: none;
+        color: #dc2626;
+        cursor: pointer;
+        padding: 0.25rem;
+        border-radius: 0.25rem;
+    }
+
+    .ai-remove-btn:hover {
+        background: #fee2e2;
+    }
+
+    .ai-add-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        background: none;
+        border: 1px dashed var(--border-color, #d1d5db);
+        color: var(--text-muted, #6b7280);
+        padding: 0.375rem 0.75rem;
+        border-radius: 0.375rem;
+        font-size: 0.75rem;
+        cursor: pointer;
+    }
+
+    .ai-add-btn:hover {
+        border-color: #6366f1;
+        color: #6366f1;
+    }
+
+    /* ── LOADING ── */
+    .ai-loading {
+        display: none;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem;
+        background: #eef2ff;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        color: #4338ca;
+        margin-top: 1rem;
+    }
+
+    .ai-loading.show {
+        display: flex;
+    }
+
+    .ai-spinner {
+        width: 20px;
+        height: 20px;
+        border: 3px solid #c7d2fe;
+        border-top-color: #6366f1;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* ── PROMPT HINT ── */
+    .ai-hint {
+        font-size: 0.75rem;
+        color: var(--text-muted, #9ca3af);
+        margin-top: 0.25rem;
+    }
+
+    /* ── SECTION LABEL ── */
+    .ai-section-label {
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: var(--text-fg, #374151);
+        margin-bottom: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .ai-section-label .material-symbols-outlined {
+        font-size: 18px !important;
+        color: #6366f1;
+    }
+
+    /* ── DARK MODE ── */
+    .dark .ai-card {
+        background: #1e293b;
+        border-color: #334155;
+    }
+
+    .dark .ai-input,
+    .dark .ai-textarea,
+    .dark .ai-select {
+        background: #0f172a;
+        border-color: #334155;
+        color: #e2e8f0;
+    }
+
+    .dark .ai-step {
+        background: #0f172a;
+        color: #94a3b8;
+    }
+
+    .dark .ai-step:not(.active) .num {
+        background: #334155;
+    }
+
+    .dark .ai-list-item input {
+        background: #0f172a;
+        border-color: #334155;
+        color: #e2e8f0;
+    }
+
+    .dark .ai-loading {
+        background: #1e1b4b;
+        color: #a5b4fc;
+    }
+
+    .dark .ai-spinner {
+        border-color: #312e81;
+        border-top-color: #818cf8;
+    }
+
+    .dark .ai-add-btn {
+        border-color: #334155;
+        color: #94a3b8;
+    }
+
+    .dark .ai-add-btn:hover {
+        border-color: #818cf8;
+        color: #818cf8;
+    }
+
+    .dark .ai-remove-btn:hover {
+        background: #450a0a;
+    }
+
+    /* ── MESSAGES ── */
+    .ai-messages {
+        margin-bottom: 1rem;
+    }
+
+    .ai-msg {
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .ai-msg-success {
+        background: #d1fae5;
+        color: #065f46;
+    }
+
+    .ai-msg-error {
+        background: #fee2e2;
+        color: #991b1b;
+    }
+
+    .dark .ai-msg-success {
+        background: #064e3b;
+        color: #6ee7b7;
+    }
+
+    .dark .ai-msg-error {
+        background: #450a0a;
+        color: #fca5a5;
+    }
+</style>
+
+<div class="ai-container">
+    <!-- Header -->
+    <div class="ai-header">
+        <span class="material-symbols-outlined">auto_awesome</span>
+        <h1>Tạo bài viết bằng AI</h1>
+        <span class="tag">Beta</span>
+    </div>
+
+    <!-- Messages -->
+    {% if messages %}
+    <div class="ai-messages">
+        {% for message in messages %}
+        <div class="ai-msg {% if message.tags == 'success' %}ai-msg-success{% else %}ai-msg-error{% endif %}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Steps indicator -->
+    <div class="ai-steps">
+        <div class="ai-step active" id="step1-indicator">
+            <span class="num">1</span> Nhập chủ đề
+        </div>
+        <div class="ai-step" id="step2-indicator">
+            <span class="num">2</span> AI tạo nội dung
+        </div>
+        <div class="ai-step" id="step3-indicator">
+            <span class="num">3</span> Chỉnh sửa & Lưu
+        </div>
+    </div>
+
+    <!-- STEP 1: Nhập chủ đề -->
+    <div id="step1-panel">
+        <div class="ai-card">
+            <div class="ai-card-title">
+                <span class="material-symbols-outlined" style="color:#6366f1">edit_note</span>
+                Nhập thông tin chủ đề
+            </div>
+
+            <div class="ai-form-group">
+                <label class="ai-label">Chủ đề bài viết *</label>
+                <input type="text" class="ai-input" id="ai-topic"
+                    placeholder="VD: Sửa lỗi laptop không lên nguồn, Thay pin laptop Dell..." />
+                <p class="ai-hint">Nhập chủ đề liên quan đến dịch vụ sửa chữa laptop</p>
+            </div>
+
+            <div class="ai-form-group">
+                <label class="ai-label">Danh mục</label>
+                <select class="ai-select" id="ai-category">
+                    <option value="">-- Chọn danh mục --</option>
+                    {% for cat in categories %}
+                    <option value="{{ cat.id }}">{{ cat.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="ai-form-group">
+                <label class="ai-label">Yêu cầu thêm (tùy chọn)</label>
+                <textarea class="ai-textarea" id="ai-extra" rows="3"
+                    placeholder="VD: Tập trung vào laptop Dell, giá thành rẻ, bảo hành 12 tháng..."></textarea>
+            </div>
+
+            <button class="ai-btn ai-btn-primary" id="ai-generate-btn" onclick="generateContent()">
+                <span class="material-symbols-outlined">auto_awesome</span>
+                Tạo nội dung bằng AI
+            </button>
+
+            <div class="ai-loading" id="ai-loading">
+                <div class="ai-spinner"></div>
+                <span>AI đang viết bài... vui lòng đợi (15-30 giây)</span>
+            </div>
+        </div>
+
+        <!-- Hướng dẫn sử dụng -->
+        <div class="ai-card">
+            <div class="ai-card-title">
+                <span class="material-symbols-outlined" style="color:#f59e0b">info</span>
+                Hướng dẫn sử dụng
+            </div>
+            <div style="font-size:0.8125rem; color:var(--text-muted,#6b7280); line-height:1.8">
+                <p><strong>Bước 1:</strong> Nhập chủ đề bài viết (VD: "Sửa lỗi bàn phím laptop", "Thay màn hình laptop
+                    Asus")</p>
+                <p><strong>Bước 2:</strong> Nhấn nút "Tạo nội dung bằng AI" — AI sẽ tự viết bài dựa trên chủ đề</p>
+                <p><strong>Bước 3:</strong> Xem lại, chỉnh sửa nội dung nếu cần, rồi nhấn "Lưu bài viết"</p>
+                <br>
+                <p>⚠️ <strong>Lưu ý:</strong> Bài viết sau khi lưu sẽ ở trạng thái <em>"Chưa xuất bản"</em>. Anh vào
+                    phần Quản lý Bài viết để kiểm tra và bật xuất bản.</p>
+                <br>
+                <p>💡 <strong>Mẹo:</strong> Nhập chủ đề càng chi tiết, AI sẽ viết càng chính xác. Thêm yêu cầu bổ sung ở
+                    ô phía dưới nếu cần.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- STEP 2 & 3: AI Content + Edit -->
+    <div id="step2-panel" style="display:none">
+        <form method="post" id="save-form">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="save" />
+            <input type="hidden" name="category" id="save-category" />
+
+            <!-- Thông tin chính -->
+            <div class="ai-card">
+                <div class="ai-card-title">
+                    <span class="material-symbols-outlined" style="color:#6366f1">article</span>
+                    Thông tin bài viết
+                </div>
+
+                <div class="ai-form-group">
+                    <label class="ai-label">Tiêu đề *</label>
+                    <input type="text" class="ai-input" name="title" id="edit-title" />
+                </div>
+
+                <div class="ai-form-group">
+                    <label class="ai-label">Mô tả SEO</label>
+                    <textarea class="ai-textarea" name="description" id="edit-description" rows="2"></textarea>
+                </div>
+
+                <div style="display:flex;gap:1rem">
+                    <div class="ai-form-group" style="flex:1">
+                        <label class="ai-label">Ngày xuất bản</label>
+                        <input type="text" class="ai-input" name="publish_day" id="edit-day" />
+                    </div>
+                    <div class="ai-form-group" style="flex:1">
+                        <label class="ai-label">Tháng</label>
+                        <input type="text" class="ai-input" name="publish_month" id="edit-month" />
+                    </div>
+                </div>
+
+                <!-- Ảnh AI -->
+                <div class="ai-form-group">
+                    <label class="ai-label">Ảnh đại diện (AI tự tạo)</label>
+                    <input type="hidden" name="ai_image_path" id="ai-image-path" />
+                    <div id="ai-image-preview" style="display:none; margin-bottom:0.75rem">
+                        <img id="ai-image-img" src="" alt="AI Thumbnail"
+                            style="width:100%; max-width:400px; border-radius:0.5rem; border:1px solid var(--border-color, #e5e7eb)" />
+                    </div>
+                    <div style="display:flex; gap:0.5rem; align-items:center">
+                        <button type="button" class="ai-btn ai-btn-outline" id="gen-img-btn" onclick="generateImage()">
+                            <span class="material-symbols-outlined">image</span>
+                            Tạo ảnh bằng AI
+                        </button>
+                        <div class="ai-loading" id="ai-img-loading" style="margin-top:0;flex:1">
+                            <div class="ai-spinner"></div>
+                            <span>Đang tạo ảnh... (10-20 giây)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nội dung -->
+            <div class="ai-card">
+                <div class="ai-card-title">
+                    <span class="material-symbols-outlined" style="color:#059669">description</span>
+                    Nội dung bài viết
+                </div>
+
+                <div class="ai-form-group">
+                    <label class="ai-label">Lời giới thiệu</label>
+                    <textarea class="ai-textarea" name="intro" id="edit-intro" rows="4"></textarea>
+                </div>
+
+                <div class="ai-form-group">
+                    <label class="ai-label">Mô tả dịch vụ</label>
+                    <textarea class="ai-textarea" name="service_desc" id="edit-service" rows="4"></textarea>
+                </div>
+            </div>
+
+            <!-- Sections editable -->
+            <div class="ai-card">
+                <div class="ai-card-title">
+                    <span class="material-symbols-outlined" style="color:#ea580c">list</span>
+                    Chi tiết bài viết
+                </div>
+
+                <!-- Dấu hiệu -->
+                <div class="ai-section-label">
+                    <span class="material-symbols-outlined">report_problem</span> Dấu hiệu nhận biết
+                </div>
+                <div id="signs-list"></div>
+                <button type="button" class="ai-add-btn" onclick="addItem('signs')">
+                    <span class="material-symbols-outlined" style="font-size:14px!important">add</span> Thêm dấu hiệu
+                </button>
+
+                <!-- Giải pháp -->
+                <div class="ai-section-label">
+                    <span class="material-symbols-outlined">build</span> Giải pháp xử lý
+                </div>
+                <div id="fixes-list"></div>
+                <button type="button" class="ai-add-btn" onclick="addItem('fixes')">
+                    <span class="material-symbols-outlined" style="font-size:14px!important">add</span> Thêm giải pháp
+                </button>
+
+                <!-- Báo giá -->
+                <div class="ai-section-label">
+                    <span class="material-symbols-outlined">payments</span> Báo giá tham khảo
+                </div>
+                <div id="costs-list"></div>
+                <button type="button" class="ai-add-btn" onclick="addItem('costs')">
+                    <span class="material-symbols-outlined" style="font-size:14px!important">add</span> Thêm báo giá
+                </button>
+
+                <!-- Lợi ích -->
+                <div class="ai-section-label">
+                    <span class="material-symbols-outlined">thumb_up</span> Lợi ích khách hàng
+                </div>
+                <div id="benefits-list"></div>
+                <button type="button" class="ai-add-btn" onclick="addItem('benefits')">
+                    <span class="material-symbols-outlined" style="font-size:14px!important">add</span> Thêm lợi ích
+                </button>
+
+                <!-- Quy trình -->
+                <div class="ai-section-label">
+                    <span class="material-symbols-outlined">route</span> Quy trình xử lý
+                </div>
+                <div id="steps-list"></div>
+                <button type="button" class="ai-add-btn" onclick="addItem('steps')">
+                    <span class="material-symbols-outlined" style="font-size:14px!important">add</span> Thêm bước
+                </button>
+            </div>
+
+            <!-- Action buttons -->
+            <div style="display:flex;gap:0.75rem;margin-top:1rem">
+                <button type="submit" class="ai-btn ai-btn-success">
+                    <span class="material-symbols-outlined">save</span>
+                    Lưu bài viết
+                </button>
+                <button type="button" class="ai-btn ai-btn-outline" onclick="goBack()">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Quay lại
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const PROMPT_TEMPLATE = `Bạn là chuyên gia viết nội dung cho website sửa chữa laptop "LAPTOP PHÚ QUỐC". 
+Hãy viết bài viết kỹ thuật về chủ đề: "{topic}"
+
+{extra}
+
+Hãy trả về nội dung theo đúng format sau (giữ nguyên các header):
+
+Tiêu đề: [Tiêu đề bài viết hấp dẫn SEO]
+
+Mô tả SEO: [Mô tả ngắn 150-160 ký tự cho SEO]
+
+Lời giới thiệu:
+[2-3 đoạn giới thiệu về vấn đề, tại sao cần xử lý, lời khuyên chuyên gia]
+
+Mô tả dịch vụ:
+[Mô tả chi tiết dịch vụ tại LAPTOP PHÚ QUỐC]
+
+Dấu hiệu nhận biết:
+- [Dấu hiệu 1]
+- [Dấu hiệu 2]
+- [Dấu hiệu 3]
+- [Dấu hiệu 4]
+
+Giải pháp xử lý:
+- [Giải pháp 1]
+- [Giải pháp 2]
+- [Giải pháp 3]
+
+Báo giá tham khảo:
+- [Dịch vụ 1: XXX.000đ - XXX.000đ]
+- [Dịch vụ 2: XXX.000đ - XXX.000đ]
+
+Lợi ích khách hàng:
+- [Lợi ích 1]
+- [Lợi ích 2]
+- [Lợi ích 3]
+
+Quy trình xử lý:
+- [Bước 1: Tiếp nhận và kiểm tra]
+- [Bước 2: ...]
+- [Bước 3: ...]
+- [Bước 4: ...]`;
+
+    function generateContent() {
+        const topic = document.getElementById('ai-topic').value.trim();
+        if (!topic) {
+            alert('Vui lòng nhập chủ đề bài viết!');
+            return;
+        }
+
+        const extra = document.getElementById('ai-extra').value.trim();
+        const extraText = extra ? `Yêu cầu thêm: ${extra}` : '';
+        const prompt = PROMPT_TEMPLATE.replace('{topic}', topic).replace('{extra}', extraText);
+
+        // Show loading
+        document.getElementById('ai-generate-btn').disabled = true;
+        document.getElementById('ai-loading').classList.add('show');
+
+        // Gọi AI API (Google Gemini miễn phí)
+        callAI(prompt).then(content => {
+            document.getElementById('ai-loading').classList.remove('show');
+            document.getElementById('ai-generate-btn').disabled = false;
+
+            if (content) {
+                showEditPanel(content);
+            }
+        }).catch(err => {
+            document.getElementById('ai-loading').classList.remove('show');
+            document.getElementById('ai-generate-btn').disabled = false;
+            alert('Lỗi khi gọi AI: ' + err.message + '\n\nBạn có thể tự nhập nội dung ở bước tiếp theo.');
+            // Vẫn cho chuyển sang bước edit với nội dung trống
+            showEditPanel('');
+        });
+    }
+
+    async function callAI(prompt) {
+        // Sử dụng Gemini API (miễn phí)
+        // Anh cần thêm GEMINI_API_KEY vào .env
+        // Hoặc dùng bất kỳ AI API nào anh muốn
+
+        try {
+            const response = await fetch('/api/ai/generate/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken'),
+                },
+                body: JSON.stringify({ prompt: prompt })
+            });
+
+            if (!response.ok) {
+                throw new Error('API trả về lỗi ' + response.status);
+            }
+
+            const data = await response.json();
+            return data.content || '';
+        } catch (e) {
+            // Fallback: cho user tự nhập
+            throw e;
+        }
+    }
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    function showEditPanel(content) {
+        // Parse content
+        const parsed = parseContent(content);
+
+        // Fill form
+        document.getElementById('edit-title').value = parsed.title;
+        document.getElementById('edit-description').value = parsed.description;
+        document.getElementById('edit-intro').value = parsed.intro;
+        document.getElementById('edit-service').value = parsed.service_desc;
+
+        // Set date
+        const now = new Date();
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        document.getElementById('edit-day').value = now.getDate().toString().padStart(2, '0');
+        document.getElementById('edit-month').value = months[now.getMonth()];
+
+        // Category
+        document.getElementById('save-category').value = document.getElementById('ai-category').value;
+
+        // Fill lists
+        fillList('signs', parsed.signs);
+        fillList('fixes', parsed.fixes);
+        fillList('costs', parsed.costs);
+        fillList('benefits', parsed.benefits);
+        fillList('steps', parsed.steps);
+
+        // Show step 2
+        document.getElementById('step1-panel').style.display = 'none';
+        document.getElementById('step2-panel').style.display = 'block';
+        document.getElementById('step1-indicator').classList.remove('active');
+        document.getElementById('step2-indicator').classList.add('active');
+        document.getElementById('step3-indicator').classList.add('active');
+
+        // Tự động tạo ảnh AI
+        generateImage();
+    }
+
+    function parseContent(text) {
+        const result = {
+            title: '', description: '', intro: '', service_desc: '',
+            signs: [], fixes: [], costs: [], benefits: [], steps: []
+        };
+
+        if (!text) return result;
+
+        // Debug: log raw AI content
+        console.log('=== RAW AI CONTENT ===');
+        console.log(text);
+        console.log('======================');
+
+        let currentSection = null;
+        let buffer = [];
+
+        text.split('\n').forEach(line => {
+            const trimmed = line.trim();
+            // Loại bỏ markdown formatting: **, *, ##, #
+            const clean = trimmed.replace(/^#{1,4}\s*/, '').replace(/\*\*/g, '').replace(/^\*\s*/, '').trim();
+            const lower = clean.toLowerCase();
+
+            if (lower.startsWith('tiêu đề:') || lower.startsWith('tiêu đề :') || lower.startsWith('title:')) {
+                flushBuffer(result, currentSection, buffer);
+                currentSection = 'title';
+                const val = clean.split(':').slice(1).join(':').trim();
+                if (val) result.title = val;
+                buffer = [];
+            } else if (lower.startsWith('mô tả seo:') || lower.startsWith('mô tả seo :') || lower.startsWith('description:')) {
+                flushBuffer(result, currentSection, buffer);
+                currentSection = 'description';
+                const val = clean.split(':').slice(1).join(':').trim();
+                if (val) result.description = val;
+                buffer = [];
+            } else if (lower.match(/^(lời\s*)?giới thiệu/)) {
+                flushBuffer(result, currentSection, buffer);
+                currentSection = 'intro';
+                buffer = [];
+            } else if (lower.match(/mô tả dịch vụ|chi tiết dịch vụ/)) {
+                flushBuffer(result, currentSection, buffer);
+                currentSection = 'service_desc';
+                buffer = [];
+            } else if (lower.match(/dấu hiệu|triệu chứng/)) {
+                flushBuffer(result, currentSection, buffer);
+                currentSection = 'signs';
+                buffer = [];
+            } else if (lower.match(/giải pháp|cách sửa|cách khắc phục|hướng xử lý/)) {
+                flushBuffer(result, currentSection, buffer);
+                currentSection = 'fixes';
+                buffer = [];
+            } else if (lower.match(/báo giá|chi phí|bảng giá/)) {
+                flushBuffer(result, currentSection, buffer);
+                currentSection = 'costs';
+                buffer = [];
+            } else if (lower.match(/lợi ích|ưu điểm|tại sao chọn/)) {
+                flushBuffer(result, currentSection, buffer);
+                currentSection = 'benefits';
+                buffer = [];
+            } else if (lower.match(/quy trình|các bước|bước thực hiện/)) {
+                flushBuffer(result, currentSection, buffer);
+                currentSection = 'steps';
+                buffer = [];
+            } else if (clean) {
+                buffer.push(clean);
+            }
+        });
+
+        flushBuffer(result, currentSection, buffer);
+
+        // Debug: log parsed result
+        console.log('=== PARSED RESULT ===');
+        console.log(JSON.stringify(result, null, 2));
+        console.log('=====================');
+
+        return result;
+    }
+
+    function flushBuffer(result, section, lines) {
+        if (!section || lines.length === 0) return;
+
+        if (section === 'title' && !result.title) {
+            result.title = lines.join(' ');
+        } else if (section === 'description' && !result.description) {
+            result.description = lines.join(' ');
+        } else if (section === 'intro') {
+            result.intro = lines.join('\n');
+        } else if (section === 'service_desc') {
+            result.service_desc = lines.join('\n');
+        } else if (['signs', 'fixes', 'costs', 'benefits', 'steps'].includes(section)) {
+            lines.forEach(l => {
+                const cleaned = l.replace(/^[\-\*\d\.]+\s*/, '').trim();
+                if (cleaned) result[section].push(cleaned);
+            });
+        }
+    }
+
+    function fillList(section, items) {
+        const container = document.getElementById(section + '-list');
+        container.innerHTML = '';
+        if (items.length === 0) {
+            addItem(section); // Thêm 1 ô trống
+        } else {
+            items.forEach(item => addItem(section, item));
+        }
+    }
+
+    function addItem(section, value) {
+        const container = document.getElementById(section + '-list');
+        const div = document.createElement('div');
+        div.className = 'ai-list-item';
+        div.innerHTML = `
+        <input type="text" name="${section}[]" value="${(value || '').replace(/"/g, '&quot;')}" placeholder="Nhập nội dung..." />
+        <button type="button" class="ai-remove-btn" onclick="this.parentElement.remove()">
+            <span class="material-symbols-outlined" style="font-size:18px!important">close</span>
+        </button>
+    `;
+        container.appendChild(div);
+    }
+
+    function goBack() {
+        document.getElementById('step1-panel').style.display = 'block';
+        document.getElementById('step2-panel').style.display = 'none';
+        document.getElementById('step1-indicator').classList.add('active');
+        document.getElementById('step2-indicator').classList.remove('active');
+        document.getElementById('step3-indicator').classList.remove('active');
+    }
+
+    async function generateImage() {
+        const title = document.getElementById('edit-title').value || document.getElementById('ai-topic').value;
+        if (!title) {
+            alert('Cần có tiêu đề bài viết để tạo ảnh');
+            return;
+        }
+
+        document.getElementById('gen-img-btn').disabled = true;
+        document.getElementById('ai-img-loading').classList.add('show');
+
+        try {
+            const response = await fetch('/api/ai/generate-image/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken'),
+                },
+                body: JSON.stringify({ topic: title })
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.image_url) {
+                document.getElementById('ai-image-path').value = data.image_path;
+                document.getElementById('ai-image-img').src = data.image_url;
+                document.getElementById('ai-image-preview').style.display = 'block';
+                document.getElementById('gen-img-btn').innerHTML = `
+                    <span class="material-symbols-outlined">refresh</span>
+                    Tạo lại ảnh khác
+                `;
+                console.log('[AI-IMG] Ảnh đã tạo:', data.image_url);
+            } else {
+                alert('Lỗi tạo ảnh: ' + (data.error || 'Unknown'));
+            }
+        } catch (e) {
+            console.error('[AI-IMG] Error:', e);
+            alert('Lỗi tạo ảnh: ' + e.message);
+        } finally {
+            document.getElementById('gen-img-btn').disabled = false;
+            document.getElementById('ai-img-loading').classList.remove('show');
+        }
+    }
+</script>
+{% endblock %}

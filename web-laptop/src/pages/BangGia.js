@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getPriceList } from '../services/api';
+import { Loader } from 'lucide-react';
 
-const MOCK_DATA = [
+const FALLBACK_DATA = [
   {
     tinhTrang: "Laptop cắm sạc đèn báo sáng nhưng không lên nguồn",
     loi: "Lỗi nhẹ: Hư nút mở nguồn",
@@ -94,6 +96,48 @@ const MOCK_DATA = [
 ];
 
 const BangGia = () => {
+  const [priceData, setPriceData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [isOffline, setIsOffline] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function fetchPrices() {
+      setLoading(true);
+      try {
+        const data = await getPriceList();
+        if (!cancelled) {
+          setPriceData(data);
+          setIsOffline(false);
+        }
+      } catch (err) {
+        console.warn('[BangGia] API error, dùng data cục bộ:', err.message);
+        if (!cancelled) {
+          setPriceData(FALLBACK_DATA);
+          setIsOffline(true);
+        }
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+
+    fetchPrices();
+    return () => { cancelled = true; };
+  }, []);
+
+  if (loading) {
+    return (
+      <div style={{ backgroundColor: '#f8f9fa', padding: '40px 0', minHeight: '80vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div style={{ textAlign: 'center', color: '#666' }}>
+          <Loader size={40} style={{ marginBottom: '15px', animation: 'spin 1s linear infinite' }} />
+          <p>Đang tải bảng giá...</p>
+        </div>
+        <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+      </div>
+    );
+  }
+
   return (
     <div style={{ backgroundColor: '#f8f9fa', padding: '40px 0', minHeight: '80vh' }}>
       <div className="container" style={{ maxWidth: '1200px' }}>
@@ -126,6 +170,12 @@ const BangGia = () => {
           </div>
         </div>
 
+        {isOffline && (
+          <div style={{ padding: '10px 15px', backgroundColor: '#fef3c7', borderRadius: '4px', marginBottom: '20px', fontSize: '0.9rem', color: '#92400e', border: '1px solid #fde68a' }}>
+            ⚠️ Không kết nối được API — đang hiển thị dữ liệu mẫu.
+          </div>
+        )}
+
         <div style={{ 
           backgroundColor: '#fff', 
           borderRadius: '4px', 
@@ -149,9 +199,9 @@ const BangGia = () => {
                 </tr>
               </thead>
               <tbody>
-                {MOCK_DATA.map((item, index) => (
+                {priceData.map((item, index) => (
                   <tr 
-                    key={index} 
+                    key={item.id || index} 
                     style={{ 
                       borderBottom: '1px solid #eee',
                       transition: 'background-color 0.2s',

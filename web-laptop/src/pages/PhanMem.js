@@ -1,16 +1,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { ChevronLeft, ChevronRight, Loader } from 'lucide-react';
+import { getArticles, getCategories, getMediaUrl } from '../services/api';
 import { phanMemData } from '../data/phanMemData';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-
-const CATEGORIES = [
-  "Tất cả",
-  "Thay màn hình",
-  "Thay pin",
-  "Sửa nguồn",
-  "Sửa main",
-  "Vệ sinh laptop"
-];
 
 const ITEMS_PER_PAGE = 9;
 
@@ -18,16 +10,77 @@ const PhanMem = () => {
   const [selectedCategory, setSelectedCategory] = useState("Tất cả");
   const [currentPage, setCurrentPage] = useState(1);
 
+  // ─── API State ───
+  const [articles, setArticles] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [isOffline, setIsOffline] = useState(false);
+
+  // Fetch categories + articles từ backend
+  useEffect(() => {
+    let cancelled = false;
+
+    async function fetchData() {
+      setLoading(true);
+      try {
+        const [catData, artData] = await Promise.all([
+          getCategories(),
+          getArticles(),
+        ]);
+        if (!cancelled) {
+          setCategories(catData);
+          setArticles(artData);
+          setIsOffline(false);
+        }
+      } catch (err) {
+        console.warn('[PhanMem] API error, dùng data cục bộ:', err.message);
+        if (!cancelled) {
+          setIsOffline(true);
+          setArticles(phanMemData);
+        }
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+
+    fetchData();
+    return () => { cancelled = true; };
+  }, []);
+
   // Reset to page 1 when category changes
   useEffect(() => {
     setCurrentPage(1);
   }, [selectedCategory]);
 
+  // Build category list: "Tất cả" + từ API hoặc fallback
+  const categoryList = useMemo(() => {
+    if (categories.length > 0) {
+      return ["Tất cả", ...categories.map(c => c.name)];
+    }
+    // Fallback từ data cục bộ
+    const unique = [...new Set(phanMemData.map(item => item.category))];
+    return ["Tất cả", ...unique];
+  }, [categories]);
+
+  // Tìm slug của category đã chọn (để filter API data)
+  const selectedCategorySlug = useMemo(() => {
+    if (selectedCategory === "Tất cả") return null;
+    const cat = categories.find(c => c.name === selectedCategory);
+    return cat ? cat.slug : null;
+  }, [selectedCategory, categories]);
+
   // Filter data based on category
   const filteredData = useMemo(() => {
-    if (selectedCategory === "Tất cả") return phanMemData;
-    return phanMemData.filter(item => item.category === selectedCategory);
-  }, [selectedCategory]);
+    if (selectedCategory === "Tất cả") return articles;
+
+    if (isOffline) {
+      // Fallback data: filter theo category name
+      return articles.filter(item => item.category === selectedCategory);
+    }
+
+    // API data: filter theo category name (server đã trả)
+    return articles.filter(item => item.category === selectedCategory);
+  }, [selectedCategory, articles, isOffline]);
 
   // Calculate pagination
   const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
@@ -40,6 +93,35 @@ const PhanMem = () => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // Helper: lấy link slug cho từng bài viết (API trả slug, fallback trả id)
+  const getArticleSlug = (item) => item.slug || item.id;
+
+  // Helper: lấy thumbnail URL
+  const getThumbnail = (item) => {
+    if (isOffline) return item.thumbnail;
+    return getMediaUrl(item.thumbnail);
+  };
+
+  // Helper: lấy date object
+  const getDate = (item) => {
+    if (isOffline) return item.date;
+    return item.date || { day: '--', month: '--' };
+  };
+
+  if (loading) {
+    return (
+      <div style={{ backgroundColor: '#f8f9fa', padding: '2rem 0', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div style={{ textAlign: 'center', color: '#666' }}>
+          <Loader size={40} className="spin-animation" style={{ marginBottom: '15px', animation: 'spin 1s linear infinite' }} />
+          <p>Đang tải dữ liệu...</p>
+        </div>
+        <style>{`
+          @keyframes spin { to { transform: rotate(360deg); } }
+        `}</style>
+      </div>
+    );
+  }
 
   return (
     <div style={{ backgroundColor: '#f8f9fa', padding: '2rem 0', minHeight: '100vh' }}>
@@ -57,6 +139,12 @@ const PhanMem = () => {
           <div className="news-header-line"></div>
         </div>
 
+        {isOffline && (
+          <div style={{ padding: '10px 15px', backgroundColor: '#fef3c7', borderRadius: '4px', marginBottom: '20px', fontSize: '0.9rem', color: '#92400e', border: '1px solid #fde68a' }}>
+            ⚠️ Không kết nối được API — đang hiển thị dữ liệu mẫu.
+          </div>
+        )}
+
         <div className="news-layout-flex">
 
           {/* Main Content (80%) */}
@@ -65,13 +153,13 @@ const PhanMem = () => {
               {currentItems.length > 0 ? (
                 currentItems.map((item) => (
                   <Link
-                    key={item.id}
-                    to={`/phan-mem/${item.id}`}
+                    key={getArticleSlug(item)}
+                    to={`/phan-mem/${getArticleSlug(item)}`}
                     className="news-card"
                   >
                     <div className="news-card-img-wrapper">
                       <img
-                        src={item.thumbnail}
+                        src={getThumbnail(item)}
                         alt={item.title}
                         className="news-card-img"
                       />
@@ -83,8 +171,8 @@ const PhanMem = () => {
 
                       <div className="news-card-meta">
                         <div className="news-date-badge">
-                          <div className="news-date-day">{item.date.day}</div>
-                          <div className="news-date-month">{item.date.month}</div>
+                          <div className="news-date-day">{getDate(item).day}</div>
+                          <div className="news-date-month">{getDate(item).month}</div>
                         </div>
                         <h2 className="news-card-title">
                           {item.title}
@@ -142,7 +230,7 @@ const PhanMem = () => {
                 <h3 className="sidebar-title">Danh mục</h3>
               </div>
               <div className="sidebar-list">
-                {CATEGORIES.map((cat) => (
+                {categoryList.map((cat) => (
                   <div
                     key={cat}
                     className={`sidebar-item ${selectedCategory === cat ? 'active' : ''}`}

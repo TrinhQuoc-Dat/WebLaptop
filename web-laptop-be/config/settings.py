@@ -239,6 +239,11 @@ UNFOLD = {
                         'icon': 'settings',
                         'link': reverse_lazy('admin:core_siteconfig_changelist'),
                     },
+                    {
+                        'title': 'Tạo bài viết AI',
+                        'icon': 'auto_awesome',
+                        'link': reverse_lazy('ai_article'),
+                    },
                 ],
             },
         ],
