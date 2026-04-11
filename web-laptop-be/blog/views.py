@@ -35,5 +35,5 @@ class ArticleDetailView(generics.RetrieveAPIView):
         return Article.objects.filter(is_published=True).select_related(
             'category'
         ).prefetch_related(
-            'signs', 'fixes', 'costs', 'benefits', 'steps'
+            'signs', 'fixes', 'costs', 'benefits'
         )

@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import (
     Category, Article, ArticleSign, ArticleFix,
-    ArticleCost, ArticleBenefit, ArticleStep
+    ArticleCost, ArticleBenefit
 )
 
 
@@ -58,10 +58,7 @@ class ArticleBenefitSerializer(serializers.ModelSerializer):
         fields = ['content']
 
 
-class ArticleStepSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ArticleStep
-        fields = ['content']
+
 
 
 class ArticleDetailSerializer(serializers.ModelSerializer):
@@ -71,7 +68,7 @@ class ArticleDetailSerializer(serializers.ModelSerializer):
       id, title, description, thumbnail,
       date: { day, month },
       category,
-      content: { intro, signs[], fixes[], cost[], service, benefits[], steps[] }
+      content: { intro, signs[], fixes[], cost[], service, benefits[] }
     }
     """
     date = serializers.SerializerMethodField()
@@ -96,5 +93,4 @@ class ArticleDetailSerializer(serializers.ModelSerializer):
             'cost': [c.content for c in obj.costs.all()],
             'service': obj.service_desc,
             'benefits': [b.content for b in obj.benefits.all()],
-            'steps': [s.content for s in obj.steps.all()],
         }

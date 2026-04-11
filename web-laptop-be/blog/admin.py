@@ -2,7 +2,7 @@ from django.contrib import admin
 from unfold.admin import ModelAdmin, TabularInline
 from .models import (
     Category, Article, ArticleSign, ArticleFix,
-    ArticleCost, ArticleBenefit, ArticleStep
+    ArticleCost, ArticleBenefit
 )
 
 
@@ -39,10 +39,7 @@ class ArticleBenefitInline(TabularInline):
     fields = ['content', 'order']
 
 
-class ArticleStepInline(TabularInline):
-    model = ArticleStep
-    extra = 1
-    fields = ['content', 'order']
+
 
 
 @admin.register(Article)
@@ -72,5 +69,4 @@ class ArticleAdmin(ModelAdmin):
         ArticleFixInline,
         ArticleCostInline,
         ArticleBenefitInline,
-        ArticleStepInline,
     ]

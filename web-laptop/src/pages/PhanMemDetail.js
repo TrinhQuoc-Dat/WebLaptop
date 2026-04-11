@@ -6,7 +6,7 @@ import {
   ChevronLeft, Info, Wrench, CheckCircle, Package,
   ShieldCheck, ListOrdered, DollarSign, Clock,
   Calendar, Tag, PhoneCall, MessageCircle, ArrowRight,
-  MapPin, Loader
+  MapPin, Loader, ClipboardList
 } from 'lucide-react';
 
 const PhanMemDetail = () => {
@@ -212,15 +212,6 @@ const PhanMemDetail = () => {
                           {fix}
                         </p>
                       </div>
-                      {idx === 1 && (
-                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                          <img
-                            src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&q=80"
-                            alt="Minh họa"
-                            style={{ borderRadius: '4px', width: '100%', border: '1px solid #e5e7eb' }}
-                          />
-                        </div>
-                      )}
                     </div>
                   ))}
                 </div>
@@ -231,9 +222,9 @@ const PhanMemDetail = () => {
             {content.cost && content.cost.length > 0 && (
               <section id="section-3">
                 <div className="price-black-card">
-                  <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                  <div style={{ textAlign: 'center', marginBottom: '30px' }}>
                     <div className="tag-badge" style={{ background: '#0b5e9d', color: '#fff', border: 'none', marginBottom: '15px' }}>Bảng giá niêm yết</div>
-                    <h2 className="detail-h1" style={{ color: '#fff', fontSize: '3rem', margin: 0 }}>Chi phí dịch vụ dự kiến</h2>
+                    <h2 className="detail-h2" style={{ color: '#fff', fontSize: '1.8rem', margin: 0, paddingBottom: 0 }}>Chi phí dịch vụ dự kiến</h2>
                   </div>
 
                   <div style={{ maxWidth: '700px', margin: '0 auto' }}>
@@ -242,8 +233,8 @@ const PhanMemDetail = () => {
                       return (
                         <div key={idx} className="price-row-item">
                           <div className="price-name">
-                            <CheckCircle size={20} style={{ color: '#10b981' }} />
-                            {parts[0]}
+                            <CheckCircle size={18} style={{ color: '#10b981', flexShrink: 0 }} />
+                            <span>{parts[0]}</span>
                           </div>
                           {parts[1] && <div className="price-amount">{parts[1].trim()}</div>}
                         </div>
@@ -251,9 +242,9 @@ const PhanMemDetail = () => {
                     })}
                   </div>
 
-                  <div style={{ marginTop: '50px', background: 'rgba(255,255,255,0.05)', padding: '25px', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', gap: '20px' }}>
-                    <Info size={32} style={{ color: '#fbbf24' }} />
-                    <p style={{ fontSize: '0.9rem', color: '#ccc', fontStyle: 'italic', margin: 0 }}>
+                  <div style={{ marginTop: '30px', background: 'rgba(255,255,255,0.05)', padding: '20px', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'flex-start', gap: '15px', flexWrap: 'wrap' }}>
+                    <Info size={24} style={{ color: '#fbbf24', flexShrink: 0, marginTop: '2px' }} />
+                    <p style={{ fontSize: '0.85rem', color: '#ccc', fontStyle: 'italic', margin: 0, flex: 1, minWidth: '200px', lineHeight: '1.6' }}>
                       Lưu ý: Giá trên áp dụng cho hầu hết các dòng laptop phổ thông. Với các dòng Gaming, Macbook đời mới, vui lòng liên hệ trực tiếp để có giá chính xác theo linh kiện thực tế.
                     </p>
                   </div>
@@ -268,29 +259,21 @@ const PhanMemDetail = () => {
                   <div className="head-icon-box"><Package size={28} /></div>
                   <h2 className="detail-h2">Chi tiết dịch vụ tại LAPTOP PHÚ QUỐC</h2>
                 </div>
-                <div style={{ display: 'flex', gap: '40px', alignItems: 'center', flexWrap: 'wrap' }}>
-                  <div style={{ flex: '1', minWidth: '300px' }}>
-                    <img
-                      src="https://images.unsplash.com/photo-1597733336794-12d05021d510?w=800&q=80"
-                      alt="Technical Support"
-                      style={{ width: '100%', borderRadius: '4px', border: '1px solid #e5e7eb' }}
-                    />
-                  </div>
-                  <div style={{ flex: '1.2', minWidth: '300px' }}>
-                    <div style={{ color: '#0b5e9d', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.75rem', marginBottom: '15px' }}>Trách nhiệm & Tận tâm</div>
-                    <p style={{ fontSize: '1.4rem', fontStyle: 'italic', color: '#1f2937', fontWeight: '600', lineHeight: '1.6' }}>
-                      "{content.service}"
-                    </p>
-                    <div style={{ display: 'flex', gap: '30px', marginTop: '30px' }}>
-                      <div>
-                        <div style={{ color: '#0b5e9d', fontSize: '2.5rem', fontWeight: '900' }}>99%</div>
-                        <div style={{ fontSize: '0.7rem', fontWeight: '800', color: '#999', textTransform: 'uppercase' }}>Hài lòng tuyệt đối</div>
-                      </div>
-                      <div style={{ width: '1px', background: '#ddd' }}></div>
-                      <div>
-                        <div style={{ color: '#0b5e9d', fontSize: '2.5rem', fontWeight: '900' }}>10+</div>
-                        <div style={{ fontSize: '0.7rem', fontWeight: '800', color: '#999', textTransform: 'uppercase' }}>Máy/Ngày</div>
-                      </div>
+                <div style={{ padding: '50px 40px', textAlign: 'center' }}>
+                  <div style={{ color: '#0b5e9d', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '3px', fontSize: '0.7rem', marginBottom: '20px' }}>Trách nhiệm & Tận tâm</div>
+                  <div style={{ width: '40px', height: '3px', background: '#0b5e9d', margin: '0 auto 25px' }}></div>
+                  <p style={{ fontSize: '1.15rem', fontStyle: 'italic', color: '#374151', fontWeight: '500', lineHeight: '1.9', maxWidth: '700px', margin: '0 auto' }}>
+                    "{content.service}"
+                  </p>
+                  <div style={{ display: 'flex', justifyContent: 'center', gap: '50px', marginTop: '35px', paddingTop: '30px', borderTop: '1px solid #e2e8f0' }}>
+                    <div>
+                      <div style={{ color: '#0b5e9d', fontSize: '2.5rem', fontWeight: '900' }}>99%</div>
+                      <div style={{ fontSize: '0.7rem', fontWeight: '800', color: '#999', textTransform: 'uppercase', letterSpacing: '1px' }}>Hài lòng tuyệt đối</div>
+                    </div>
+                    <div style={{ width: '1px', background: '#d1d5db' }}></div>
+                    <div>
+                      <div style={{ color: '#0b5e9d', fontSize: '2.5rem', fontWeight: '900' }}>10+</div>
+                      <div style={{ fontSize: '0.7rem', fontWeight: '800', color: '#999', textTransform: 'uppercase', letterSpacing: '1px' }}>Máy/Ngày</div>
                     </div>
                   </div>
                 </div>
@@ -300,18 +283,18 @@ const PhanMemDetail = () => {
             {/* SECTION 5: BENEFITS */}
             {content.benefits && content.benefits.length > 0 && (
               <section id="section-5">
-                <div style={{ background: '#f8fafc', borderRadius: '4px', padding: '60px', marginTop: '80px', border: '1px solid #e2e8f0' }}>
-                  <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-                    <h2 className="detail-h2" style={{ fontSize: '2.5rem' }}>Cam kết vàng của LAPTOP PHÚ QUỐC</h2>
-                    <p style={{ color: '#666', fontStyle: 'italic', fontWeight: '500', marginTop: '10px' }}>Sự tin tưởng của khách hàng là ưu tiên hàng đầu</p>
+                <div style={{ background: '#f8fafc', borderRadius: '4px', padding: '50px 35px', marginTop: '80px', border: '1px solid #e2e8f0' }}>
+                  <div style={{ textAlign: 'center', marginBottom: '35px' }}>
+                    <h2 className="detail-h2" style={{ fontSize: '1.8rem', display: 'inline-block' }}>Cam kết vàng của LAPTOP PHÚ QUỐC</h2>
+                    <p style={{ color: '#666', fontStyle: 'italic', fontWeight: '500', marginTop: '10px', fontSize: '1rem' }}>Sự tin tưởng của khách hàng là ưu tiên hàng đầu</p>
                   </div>
                   <div className="info-card-grid">
                     {content.benefits.map((benefit, idx) => (
-                      <div key={idx} className="info-item-card" style={{ padding: '25px', background: '#fff' }}>
-                        <div className="info-card-icon" style={{ background: '#f1f5f9', border: '1px solid #e5e7eb' }}>
-                          <ShieldCheck size={24} />
+                      <div key={idx} className="info-item-card" style={{ padding: '24px', background: '#fff', alignItems: 'center' }}>
+                        <div className="info-card-icon" style={{ background: '#eff6ff', border: '1px solid #dbeafe', width: '42px', height: '42px' }}>
+                          <ShieldCheck size={20} />
                         </div>
-                        <span style={{ fontSize: '1.15rem', fontWeight: '800', color: '#333' }}>{benefit}</span>
+                        <span style={{ fontSize: '1.05rem', fontWeight: '700', color: '#333', lineHeight: '1.5' }}>{benefit}</span>
                       </div>
                     ))}
                   </div>
@@ -319,28 +302,68 @@ const PhanMemDetail = () => {
               </section>
             )}
 
-            {/* SECTION 6: STEPS */}
-            {content.steps && content.steps.length > 0 && (
-              <section id="section-6">
-                <div style={{ textAlign: 'center', margin: '80px 0 60px' }}>
-                  <h2 className="detail-h2" style={{ fontSize: '2.5rem' }}>Quy trình xử lý chuyên nghiệp</h2>
-                  <div style={{ width: '60px', height: '6px', background: '#0b5e9d', margin: '20px auto', borderRadius: '4px' }}></div>
-                </div>
-                <div className="timeline-vertical">
-                  {content.steps.map((step, idx) => (
-                    <div key={idx} className="timeline-step">
-                      <div className="step-num-box">{idx + 1}</div>
-                      <div className="step-body-card">
-                        <h4 style={{ fontSize: '1.1rem', fontWeight: '900', color: '#111827', marginBottom: '10px' }}>
-                          Giai đoạn {idx + 1}
-                        </h4>
-                        <p style={{ margin: 0, color: '#555', fontWeight: '500', lineHeight: '1.6' }}>{step}</p>
+            {/* SECTION 6: QUY TRÌNH SỬA CHỮA (Cố định 4 bước — giống trang chủ) */}
+            <section id="section-6">
+              <div style={{ textAlign: 'center', margin: '80px 0 60px' }}>
+                <h2 className="detail-h2" style={{ fontSize: '1.8rem' }}>Quy trình xử lý chuyên nghiệp</h2>
+                <div style={{ width: '60px', height: '6px', background: '#0b5e9d', margin: '20px auto', borderRadius: '4px' }}></div>
+              </div>
+
+              <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'flex-start',
+                flexWrap: 'wrap',
+                gap: '10px'
+              }}>
+                {[
+                  { icon: <ClipboardList size={28} />, title: 'Nhận máy & Kiểm tra', desc: 'Ghi nhận hiện trạng và kiểm tra tổng quát lỗi máy.' },
+                  { icon: <DollarSign size={28} />, title: 'Báo lỗi & Báo giá', desc: 'Thông báo chính xác nguyên nhân và chi phí sửa chữa.' },
+                  { icon: <Wrench size={28} />, title: 'Tiến hành sửa', desc: 'Sửa chữa nhanh chóng, chuyên nghiệp bởi kỹ thuật viên.' },
+                  { icon: <CheckCircle size={28} />, title: 'Test kỹ & Bàn giao', desc: 'Kiểm tra độ ổn định và bàn giao máy hoàn thiện.' },
+                ].map((step, idx) => (
+                  <div key={idx} style={{
+                    flex: '1 1 200px',
+                    padding: '20px',
+                    textAlign: 'center',
+                    position: 'relative',
+                    maxWidth: '260px'
+                  }}>
+                    <div style={{
+                      width: '80px', height: '80px',
+                      backgroundColor: '#0b5e9d', color: '#fff',
+                      borderRadius: '50%', margin: '0 auto 25px',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      zIndex: 2, position: 'relative',
+                      boxShadow: '0 10px 15px -3px rgba(11, 94, 157, 0.3)',
+                      border: '4px solid #fff'
+                    }}>
+                      {step.icon}
+                      <div style={{
+                        position: 'absolute',
+                        top: '-10px',
+                        right: '-10px',
+                        width: '28px',
+                        height: '28px',
+                        backgroundColor: '#ef4444',
+                        borderRadius: '50%',
+                        fontSize: '0.8rem',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        border: '2px solid #fff',
+                        color: '#fff'
+                      }}>
+                        {idx + 1}
                       </div>
                     </div>
-                  ))}
-                </div>
-              </section>
-            )}
+                    <h4 style={{ fontSize: '1.15rem', fontWeight: 'bold', marginBottom: '12px', color: '#1a365d' }}>{step.title}</h4>
+                    <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.6' }}>{step.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
 
             {/* UPGRADED FOOTER CTA */}
             <div className="detail-footer-cta">

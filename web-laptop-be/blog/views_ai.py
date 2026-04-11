@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.utils.text import slugify
 from django.conf import settings
 
-from blog.models import Article, Category, ArticleSign, ArticleFix, ArticleCost, ArticleBenefit, ArticleStep
+from blog.models import Article, Category, ArticleSign, ArticleFix, ArticleCost, ArticleBenefit
 
 
 def generate_slug(title):
@@ -54,7 +54,6 @@ def parse_ai_response(text):
         'fixes': [],
         'costs': [],
         'benefits': [],
-        'steps': [],
     }
 
     # Tìm các section bằng headers
@@ -112,11 +111,6 @@ def parse_ai_response(text):
                 _save_section(sections, current_section, current_content)
             current_section = 'benefits'
             current_content = []
-        elif any(kw in line_lower for kw in ['quy trình', 'steps:', 'các bước']):
-            if current_section:
-                _save_section(sections, current_section, current_content)
-            current_section = 'steps'
-            current_content = []
         else:
             if line_stripped:
                 current_content.append(line_stripped)
@@ -135,7 +129,7 @@ def _save_section(sections, section_name, content_lines):
             sections[section_name] = ' '.join(content_lines)
     elif section_name in ('intro', 'service_desc'):
         sections[section_name] = '\n'.join(content_lines)
-    elif section_name in ('signs', 'fixes', 'costs', 'benefits', 'steps'):
+    elif section_name in ('signs', 'fixes', 'costs', 'benefits'):
         for line in content_lines:
             # Loại bỏ bullet points
             cleaned = re.sub(r'^[\-\*\d\.]+\s*', '', line).strip()
@@ -193,7 +187,7 @@ def ai_article_view(request):
             fixes = request.POST.getlist('fixes[]')
             costs = request.POST.getlist('costs[]')
             benefits = request.POST.getlist('benefits[]')
-            steps = request.POST.getlist('steps[]')
+
 
             if not title:
                 messages.error(request, 'Tiêu đề không được để trống!')
@@ -235,12 +229,10 @@ def ai_article_view(request):
                 for i, b in enumerate(benefits):
                     if b.strip():
                         ArticleBenefit.objects.create(article=article, content=b.strip(), order=i)
-                for i, st in enumerate(steps):
-                    if st.strip():
-                        ArticleStep.objects.create(article=article, content=st.strip(), order=i)
 
-                messages.success(request, f'✅ Đã tạo bài viết "{title}" thành công! (Chưa xuất bản)')
-                return redirect(f'/admin/blog/article/{article.pk}/change/')
+
+                messages.success(request, f'✅ Đã lưu nháp bài viết "{title}" thành công!')
+                return redirect('/admin/ai-article/')
 
             except Exception as e:
                 messages.error(request, f'❌ Lỗi khi lưu: {str(e)}')

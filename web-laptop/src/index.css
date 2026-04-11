@@ -99,7 +99,8 @@ ul {
   transition: color 0.2s;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover,
+.nav-link.active {
   color: var(--primary-color);
 }
 
@@ -149,7 +150,10 @@ ul {
 
 .hero-overlay {
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 1;
 }
@@ -361,13 +365,17 @@ ul {
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .features-grid-layout, .features-points {
+
+  .features-grid-layout,
+  .features-points {
     grid-template-columns: 1fr;
   }
+
   .support-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
+
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -377,18 +385,23 @@ ul {
   .nav-menu {
     display: none;
   }
+
   .mobile-menu-btn {
     display: block;
   }
+
   .hero-title {
     font-size: 2rem;
   }
+
   .services-grid {
     grid-template-columns: 1fr;
   }
+
   .support-grid {
     grid-template-columns: 1fr;
   }
+
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -416,9 +429,10 @@ ul {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 55px; /* Short red line like the mockup */
+  width: 55px;
+  /* Short red line like the mockup */
   height: 3px;
-  background-color: #ef4444; 
+  background-color: #ef4444;
 }
 
 .news-header-line {
@@ -464,13 +478,14 @@ ul {
 }
 
 .news-card:hover {
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 }
 
 .news-card-img-wrapper {
   position: relative;
   width: 100%;
-  padding-top: 65%; /* Visual aspect ratio from mockup */
+  padding-top: 65%;
+  /* Visual aspect ratio from mockup */
   overflow: hidden;
 }
 
@@ -573,7 +588,8 @@ ul {
 @media (max-width: 600px) {
   .news-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px; /* Slightly smaller gap for mobile */
+    gap: 15px;
+    /* Slightly smaller gap for mobile */
   }
 }
 
@@ -611,7 +627,7 @@ ul {
   border: 1px solid #e5e7eb;
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .sidebar-title {
@@ -727,9 +743,11 @@ ul {
 
 @media (max-width: 992px) {
   .news-layout-flex {
-    flex-direction: column-reverse; /* Put sidebar on top, cards below */
+    flex-direction: column-reverse;
+    /* Put sidebar on top, cards below */
     gap: 30px;
   }
+
   .news-sidebar {
     min-width: unset;
   }
@@ -908,15 +926,6 @@ ul {
   padding-bottom: 8px;
 }
 
-.detail-h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 40px;
-  height: 3px;
-  background-color: #ef4444;
-}
 
 /* Component: Info Cards (Signs/Benefits) */
 .info-card-grid {
@@ -983,7 +992,7 @@ ul {
   background: #1a1a1a;
   color: #fff;
   border-radius: 4px;
-  padding: 40px;
+  padding: 60px 40px;
   margin-top: 80px;
   position: relative;
   overflow: hidden;
@@ -994,28 +1003,60 @@ ul {
   justify-content: space-between;
   align-items: center;
   padding: 16px 24px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 4px;
-  margin-bottom: 8px;
-}
-
-.price-row-item:hover {
-  background: rgba(255,255,255,0.06);
-}
-
-.price-name {
-  font-size: 1.25rem;
-  font-weight: 700;
-  display: flex !important;
-  align-items: center;
+  margin-bottom: 10px;
   gap: 15px;
 }
 
+.price-row-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.price-name {
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex !important;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
 .price-amount {
-  font-size: 2rem;
-  font-weight: 900;
+  font-size: 1.1rem;
+  font-weight: 800;
   color: #60a5fa;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Price card responsive */
+@media (max-width: 768px) {
+  .price-black-card {
+    padding: 30px 20px;
+    margin-top: 50px;
+  }
+
+  .price-row-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 16px;
+    gap: 8px;
+  }
+
+  .price-name {
+    font-size: 0.95rem;
+    gap: 10px;
+  }
+
+  .price-amount {
+    font-size: 1rem;
+    text-align: left;
+    white-space: normal;
+    color: #93c5fd;
+  }
 }
 
 /* Timeline Layout */
@@ -1131,21 +1172,27 @@ ul {
     grid-template-columns: 1fr;
     gap: 30px;
   }
+
   .article-sticky-sidebar {
     display: none;
   }
+
   .info-card-grid {
     grid-template-columns: 1fr;
   }
+
   .detail-h1 {
     font-size: 2.5rem;
   }
+
   .solution-block {
     grid-template-columns: 1fr;
   }
+
   .timeline-vertical {
     padding-left: 60px;
   }
+
   .step-num-box {
     width: 44px;
     height: 44px;

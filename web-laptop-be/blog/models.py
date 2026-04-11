@@ -116,17 +116,3 @@ class ArticleBenefit(models.Model):
     def __str__(self):
         return self.content[:80]
 
-
-class ArticleStep(models.Model):
-    """Quy trình xử lý"""
-    article = models.ForeignKey(Article, related_name='steps', on_delete=models.CASCADE)
-    content = models.TextField('Nội dung')
-    order = models.PositiveIntegerField('Thứ tự', default=0)
-
-    class Meta:
-        verbose_name = 'Bước'
-        verbose_name_plural = 'Quy trình xử lý'
-        ordering = ['order']
-
-    def __str__(self):
-        return self.content[:80]
