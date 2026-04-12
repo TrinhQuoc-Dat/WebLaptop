@@ -6,7 +6,7 @@ Chạy: python manage.py seed_data
 
 from django.core.management.base import BaseCommand
 from core.models import Service, PriceItem, SiteConfig
-from blog.models import Category, Article, ArticleSign, ArticleFix, ArticleCost, ArticleBenefit, ArticleStep
+from blog.models import Category, Article, ArticleSign, ArticleFix, ArticleCost, ArticleBenefit
 
 
 class Command(BaseCommand):
@@ -315,7 +315,6 @@ class Command(BaseCommand):
                 ArticleCost.objects.create(article=article, content=text, order=idx)
             for idx, text in enumerate(benefits):
                 ArticleBenefit.objects.create(article=article, content=text, order=idx)
-            for idx, text in enumerate(steps):
-                ArticleStep.objects.create(article=article, content=text, order=idx)
+            # ArticleStep đã bị xóa — bỏ qua steps
 
-        self.stdout.write(f'  ✓ Đã tạo {len(articles_data)} bài viết (kèm signs, fixes, costs, benefits, steps)')
+        self.stdout.write(f'  ✓ Đã tạo {len(articles_data)} bài viết (kèm signs, fixes, costs, benefits)')

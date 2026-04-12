@@ -89,7 +89,7 @@ const Home = () => {
                 }}>
                   {item.icon}
                 </div>
-                <h4 style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '12px', color: '#1a365d' }}>{item.title}</h4>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '12px', color: '#1a365d' }}>{item.title}</h3>
                 <p style={{ color: '#475569', fontSize: '0.95rem', lineHeight: '1.6' }}>{item.desc}</p>
               </div>
             ))}
@@ -197,7 +197,7 @@ const Home = () => {
                       {idx + 1}
                     </div>
                   </div>
-                  <h4 style={{ fontSize: '1.15rem', fontWeight: 'bold', marginBottom: '12px', color: '#1a365d' }}>{step.title}</h4>
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: 'bold', marginBottom: '12px', color: '#1a365d' }}>{step.title}</h3>
                   <p style={{ color: '#475569', fontSize: '0.9rem', lineHeight: '1.6' }}>{step.desc}</p>
                 </div>
                 {idx < processSteps.length - 1 && (
@@ -231,7 +231,7 @@ const Home = () => {
         `}</style>
       </section>
 
-      <section className="support-bar" style={{ backgroundColor: '#0284c7', color: '#fff', padding: '25px 0' }}>
+      <section className="support-bar" style={{ backgroundColor: '#075985', color: '#fff', padding: '25px 0' }}>
         <div className="container support-grid">
           {supportItems.map((item, idx) => (
             <div key={idx} className="support-item">
@@ -254,7 +254,7 @@ const Home = () => {
             {commitments.map((com, idx) => (
               <div key={idx} style={{ padding: '30px', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }}>
                 <div style={{ marginBottom: '20px', color: '#38bdf8' }}>{com.icon}</div>
-                <h4 style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '12px' }}>{com.title}</h4>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '12px' }}>{com.title}</h3>
                 <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.95rem', lineHeight: '1.6' }}>{com.desc}</p>
               </div>
             ))}
@@ -296,12 +296,12 @@ const Home = () => {
       <section className="brands-section" style={{ padding: '3rem 0', borderTop: '1px solid #eee', backgroundColor: '#fff' }}>
         <div className="container">
           <div className="brands-container" style={{ display: 'flex', justifyContent: 'center', gap: '40px', flexWrap: 'wrap', alignItems: 'center' }}>
-            <img src="https://res.cloudinary.com/degewiqpj/image/upload/v1775128490/dell-1_khlgss.png" alt="Dell" height="35" style={{ opacity: 0.5, width: '110px' }} />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg" alt="HP" height="40" style={{ opacity: 0.5, width: '40px' }} />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg" alt="Asus" height="35" style={{ opacity: 0.5, width: '90px' }} />
-            <img src="https://res.cloudinary.com/degewiqpj/image/upload/v1775128490/acer-5_jvk29s.png" alt="Acer" height="35" style={{ opacity: 0.5, width: '110px' }} />
-            <img src="https://res.cloudinary.com/degewiqpj/image/upload/v1775128490/macbook_yim54e.png" alt="Macbook" height="35" style={{ opacity: 0.5, width: '130px' }} />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" height="35" style={{ opacity: 0.5, width: '110px' }} />
+            <img src="https://res.cloudinary.com/degewiqpj/image/upload/v1775128490/dell-1_khlgss.png" alt="Dell" style={{ opacity: 0.5, height: '35px', width: 'auto' }} />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg" alt="HP" style={{ opacity: 0.5, height: '40px', width: 'auto' }} />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg" alt="Asus" style={{ opacity: 0.5, height: '35px', width: 'auto' }} />
+            <img src="https://res.cloudinary.com/degewiqpj/image/upload/v1775128490/acer-5_jvk29s.png" alt="Acer" style={{ opacity: 0.5, height: '35px', width: 'auto' }} />
+            <img src="https://res.cloudinary.com/degewiqpj/image/upload/v1775128490/macbook_yim54e.png" alt="Macbook" style={{ opacity: 0.5, height: '35px', width: 'auto' }} />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" style={{ opacity: 0.5, height: '35px', width: 'auto' }} />
           </div>
         </div>
       </section>
