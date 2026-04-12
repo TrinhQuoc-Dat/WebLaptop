@@ -1,6 +1,23 @@
 from django.db import models
 
 
+class GeminiApiKey(models.Model):
+    """Danh sách Gemini API Key — dùng random khi gọi AI."""
+    label = models.CharField('Tên / Ghi chú', max_length=100, help_text='VD: Key 1, Key cá nhân...')
+    api_key = models.CharField('API Key', max_length=200)
+    is_active = models.BooleanField('Đang dùng', default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Gemini API Key'
+        verbose_name_plural = 'Gemini API Keys'
+        ordering = ['label']
+
+    def __str__(self):
+        masked = self.api_key[:8] + '***' + self.api_key[-4:] if len(self.api_key) > 12 else '***'
+        return f"{self.label} ({masked})"
+
+
 class Category(models.Model):
     """Danh mục bài viết — hiển thị sidebar PhanMem.js"""
     name = models.CharField('Tên danh mục', max_length=100)

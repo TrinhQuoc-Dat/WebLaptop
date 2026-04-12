@@ -457,18 +457,6 @@
         <h1>Tạo bài viết bằng AI</h1>
         <span class="tag">Beta</span>
     </div>
-
-    <!-- Messages -->
-    {% if messages %}
-    <div class="ai-messages">
-        {% for message in messages %}
-        <div class="ai-msg {% if message.tags == 'success' %}ai-msg-success{% else %}ai-msg-error{% endif %}">
-            {{ message }}
-        </div>
-        {% endfor %}
-    </div>
-    {% endif %}
-
     <!-- Steps indicator -->
     <div class="ai-steps">
         <div class="ai-step active" id="step-ind-0">
@@ -542,7 +530,8 @@
             </div>
             <div style="font-size:0.8125rem; color:var(--text-muted,#6b7280); line-height:1.8">
                 <p>🔹 Nhập chủ đề → Bấm <strong>"Tạo bài viết bằng AI"</strong></p>
-                <p>🔹 AI sẽ tự động tạo: Tiêu đề, Mô tả SEO, Lời giới thiệu, Mô tả dịch vụ, Dấu hiệu, Giải pháp, Báo giá, Lợi ích</p>
+                <p>🔹 AI sẽ tự động tạo: Tiêu đề, Mô tả SEO, Lời giới thiệu, Mô tả dịch vụ, Dấu hiệu, Giải pháp, Báo
+                    giá, Lợi ích</p>
                 <p>🔹 Xem lại, chỉnh sửa → Nhấn <strong>"Lưu bài viết"</strong></p>
                 <br>
                 <p>⚠️ <strong>Lưu ý:</strong> Bài viết sau khi lưu sẽ ở trạng thái <em>"Chưa xuất bản"</em>.</p>
@@ -555,11 +544,10 @@
     <!-- PANEL EDIT: Xem lại & Lưu (panel-4 giữ nguyên ID cho goToStep) -->
     <!-- ═══════════════════════════════════════ -->
     <div id="panel-4" style="display:none">
-        <form method="post" id="save-form">
+        <form method="post" id="save-form" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="hidden" name="action" value="save" />
             <input type="hidden" name="category" id="save-category" />
-            <input type="hidden" name="ai_image_path" id="ai-image-path" />
 
             <!-- Thông tin chính -->
             <div class="ai-card">
@@ -589,23 +577,11 @@
                     </div>
                 </div>
 
-                <!-- Ảnh AI -->
+                <!-- Ảnh đại diện -->
                 <div class="ai-form-group">
                     <label class="ai-label">Ảnh đại diện</label>
-                    <div id="ai-image-preview" style="display:none; margin-bottom:0.75rem">
-                        <img id="ai-image-img" src="" alt="AI Thumbnail"
-                            style="width:100%; max-width:400px; border-radius:0.5rem; border:1px solid var(--border-color, #e5e7eb)" />
-                    </div>
-                    <div style="display:flex; gap:0.5rem; align-items:center">
-                        <button type="button" class="ai-btn ai-btn-outline" id="gen-img-btn" onclick="generateImage()">
-                            <span class="material-symbols-outlined">image</span>
-                            Tạo ảnh bằng AI
-                        </button>
-                        <div class="ai-loading" id="ai-img-loading" style="margin-top:0;flex:1">
-                            <div class="ai-spinner"></div>
-                            <span>Đang tạo ảnh...</span>
-                        </div>
-                    </div>
+                    <input type="file" name="thumbnail" accept="image/*" class="ai-input" style="padding:0.5rem" />
+                    <p class="ai-hint">Tải lên ảnh thumbnail cho bài viết</p>
                 </div>
             </div>
 
@@ -885,10 +861,6 @@ Lợi ích khách hàng:
         document.getElementById('final-day').value = now.getDate().toString().padStart(2, '0');
         document.getElementById('final-month').value = months[now.getMonth()];
 
-        // Auto generate image if not already
-        if (!document.getElementById('ai-image-path').value) {
-            generateImage();
-        }
     }
 
     // ═══ PARSERS ═══
@@ -896,7 +868,6 @@ Lợi ích khách hàng:
         const result = { title: '', description: '' };
         if (!text) return result;
 
-        console.log('[parseStep1] Raw:', text);
 
         const clean = text.replace(/\*\*/g, '').replace(/^#{1,4}\s*/gm, '').trim();
         let currentSection = null;
@@ -929,7 +900,6 @@ Lợi ích khách hàng:
             }
         });
 
-        console.log('[parseStep1] Parsed:', result);
         return result;
     }
 
@@ -975,7 +945,6 @@ Lợi ích khách hàng:
         const result = { signs: [], fixes: [], costs: [], benefits: [] };
         if (!text) return result;
 
-        console.log('[parseStep3] Raw:', text);
 
         const clean = text.replace(/\*\*/g, '').replace(/^#{1,4}\s*/gm, '');
         let currentSection = null;
@@ -1003,7 +972,6 @@ Lợi ích khách hàng:
             }
         });
 
-        console.log('[parseStep3] Parsed:', JSON.stringify(result, null, 2));
         return result;
     }
 
@@ -1030,7 +998,6 @@ Lợi ích khách hàng:
         }
 
         const data = await response.json();
-        console.log('[AI] Response:', data.content);
         return data.content || '';
     }
 
@@ -1072,46 +1039,6 @@ Lợi ích khách hàng:
         container.appendChild(div);
     }
 
-    async function generateImage() {
-        const title = document.getElementById('final-title')?.value
-            || document.getElementById('edit-title')?.value
-            || document.getElementById('ai-topic')?.value;
 
-        if (!title) return;
-
-        const btn = document.getElementById('gen-img-btn');
-        btn.disabled = true;
-        document.getElementById('ai-img-loading').classList.add('show');
-
-        try {
-            const response = await fetch('/api/ai/generate-image/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken'),
-                },
-                body: JSON.stringify({ topic: title })
-            });
-
-            const data = await response.json();
-
-            if (response.ok && data.image_url) {
-                document.getElementById('ai-image-path').value = data.image_path;
-                document.getElementById('ai-image-img').src = data.image_url;
-                document.getElementById('ai-image-preview').style.display = 'block';
-                btn.innerHTML = `
-                    <span class="material-symbols-outlined">refresh</span>
-                    Tạo lại ảnh khác
-                `;
-            } else {
-                console.warn('[AI-IMG] Error:', data.error);
-            }
-        } catch (e) {
-            console.error('[AI-IMG] Error:', e);
-        } finally {
-            btn.disabled = false;
-            document.getElementById('ai-img-loading').classList.remove('show');
-        }
-    }
 </script>
 {% endblock %}

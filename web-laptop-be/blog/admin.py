@@ -2,8 +2,21 @@ from django.contrib import admin
 from unfold.admin import ModelAdmin, TabularInline
 from .models import (
     Category, Article, ArticleSign, ArticleFix,
-    ArticleCost, ArticleBenefit
+    ArticleCost, ArticleBenefit, GeminiApiKey
 )
+
+
+@admin.register(GeminiApiKey)
+class GeminiApiKeyAdmin(ModelAdmin):
+    list_display = ['label', 'masked_key', 'is_active', 'created_at']
+    list_editable = ['is_active']
+    fields = ['label', 'api_key', 'is_active']
+
+    def masked_key(self, obj):
+        k = obj.api_key
+        return k[:8] + '...' + k[-4:] if len(k) > 12 else '***'
+    masked_key.short_description = 'API Key'
+
 
 
 @admin.register(Category)

@@ -193,8 +193,8 @@ def ai_article_view(request):
                 messages.error(request, 'Tiêu đề không được để trống!')
                 return render(request, 'admin/ai_article.html', context)
 
-            # Lấy đường dẫn ảnh AI (nếu có)
-            ai_image_path = request.POST.get('ai_image_path', '').strip()
+            # Lấy file ảnh upload (nếu có)
+            thumbnail_file = request.FILES.get('thumbnail')
 
             try:
                 article = Article(
@@ -210,9 +210,9 @@ def ai_article_view(request):
                 if category_id:
                     article.category_id = int(category_id)
 
-                # Gán ảnh AI nếu có
-                if ai_image_path:
-                    article.thumbnail = ai_image_path
+                # Gán ảnh upload nếu có
+                if thumbnail_file:
+                    article.thumbnail = thumbnail_file
 
                 article.save()
 

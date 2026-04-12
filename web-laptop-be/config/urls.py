@@ -11,12 +11,11 @@ from django.views.generic import TemplateView
 from django.urls import re_path
 
 from blog.views_ai import ai_article_view
-from blog.api_ai import ai_generate_api, ai_generate_image
+from blog.api_ai import ai_generate_api
 
 urlpatterns = [
     path('admin/ai-article/', ai_article_view, name='ai_article'),
     path('api/ai/generate/', ai_generate_api, name='ai_generate'),
-    path('api/ai/generate-image/', ai_generate_image, name='ai_generate_image'),
     path('admin/', admin.site.urls),
     path('api/', include('core.urls')),
     path('api/', include('blog.urls')),

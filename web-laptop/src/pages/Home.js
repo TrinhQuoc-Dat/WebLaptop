@@ -73,7 +73,7 @@ const Home = () => {
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <h2 className="section-title" style={{ color: '#0b5e9d', textTransform: 'uppercase', fontSize: '2rem', marginBottom: '10px' }}>TẠI SAO CHỌN CHÚNG TÔI</h2>
-            <p style={{ color: '#64748b', fontSize: '1.1rem' }}>Sự tin tưởng của khách hàng là động lực phát triển của Laptop Phú Quốc</p>
+            <p style={{ color: '#475569', fontSize: '1.1rem' }}>Sự tin tưởng của khách hàng là động lực phát triển của Laptop Phú Quốc</p>
           </div>
 
           <div className="features-grid-layout" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '35px' }}>
@@ -90,7 +90,7 @@ const Home = () => {
                   {item.icon}
                 </div>
                 <h4 style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '12px', color: '#1a365d' }}>{item.title}</h4>
-                <p style={{ color: '#64748b', fontSize: '0.95rem', lineHeight: '1.6' }}>{item.desc}</p>
+                <p style={{ color: '#475569', fontSize: '0.95rem', lineHeight: '1.6' }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -198,7 +198,7 @@ const Home = () => {
                     </div>
                   </div>
                   <h4 style={{ fontSize: '1.15rem', fontWeight: 'bold', marginBottom: '12px', color: '#1a365d' }}>{step.title}</h4>
-                  <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.6' }}>{step.desc}</p>
+                  <p style={{ color: '#475569', fontSize: '0.9rem', lineHeight: '1.6' }}>{step.desc}</p>
                 </div>
                 {idx < processSteps.length - 1 && (
                   <div style={{
@@ -231,7 +231,7 @@ const Home = () => {
         `}</style>
       </section>
 
-      <section className="support-bar" style={{ backgroundColor: '#0ea5e9', color: '#fff', padding: '25px 0' }}>
+      <section className="support-bar" style={{ backgroundColor: '#0284c7', color: '#fff', padding: '25px 0' }}>
         <div className="container support-grid">
           {supportItems.map((item, idx) => (
             <div key={idx} className="support-item">

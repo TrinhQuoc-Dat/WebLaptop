@@ -244,6 +244,11 @@ UNFOLD = {
                         'icon': 'auto_awesome',
                         'link': reverse_lazy('ai_article'),
                     },
+                    {
+                        'title': 'Gemini API Keys',
+                        'icon': 'key',
+                        'link': reverse_lazy('admin:blog_geminiapikey_changelist'),
+                    },
                 ],
             },
         ],
