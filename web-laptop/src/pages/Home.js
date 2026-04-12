@@ -7,7 +7,6 @@ import {
   warningSigns,
   processSteps,
   commitments,
-  supportItems
 } from '../data/homeData';
 import { getServices, getMediaUrl } from '../services/api';
 
@@ -16,7 +15,7 @@ import { ChevronRight } from 'lucide-react';
 const Home = () => {
   // ─── Fetch dịch vụ chính từ API ───
   const [services, setServices] = useState([]);
-  const [servicesLoaded, setServicesLoaded] = useState(false);
+
 
   useEffect(() => {
     let cancelled = false;
@@ -39,8 +38,6 @@ const Home = () => {
         if (!cancelled) {
           setServices(fallbackServices);
         }
-      } finally {
-        if (!cancelled) setServicesLoaded(true);
       }
     }
 
@@ -229,17 +226,6 @@ const Home = () => {
             }
           }
         `}</style>
-      </section>
-
-      <section className="support-bar" style={{ backgroundColor: '#075985', color: '#fff', padding: '25px 0' }}>
-        <div className="container support-grid">
-          {supportItems.map((item, idx) => (
-            <div key={idx} className="support-item">
-              <div style={{ marginBottom: '10px' }}>{item.icon}</div>
-              <span>{item.title}<br />{item.desc}</span>
-            </div>
-          ))}
-        </div>
       </section>
 
       {/* 6. CAM KẾT TẠI CỬA HÀNG LAPTOP PHÚ QUỐC */}

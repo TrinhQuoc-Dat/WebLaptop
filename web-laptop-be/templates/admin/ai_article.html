@@ -772,6 +772,13 @@ Lợi ích khách hàng:
 
         const extra = document.getElementById('ai-extra').value.trim();
         const extraText = extra ? `Yêu cầu thêm: ${extra}` : '';
+
+        // Restore loading element (có thể bị thay đổi bởi thông báo lỗi trước đó)
+        const loadingEl = document.getElementById('loading-0');
+        loadingEl.innerHTML = '<div class="ai-spinner"></div><span id="loading-text">Đang khởi tạo...</span>';
+        loadingEl.style.background = '#eef2ff';
+        loadingEl.style.color = '#4338ca';
+
         const loadingText = document.getElementById('loading-text');
 
         setLoading('loading-0', true);
@@ -825,15 +832,26 @@ Lợi ích khách hàng:
         } catch (err) {
             setLoading('loading-0', false);
             document.getElementById('btn-start').disabled = false;
-            alert('Lỗi AI: ' + err.message + '\n\nBạn có thể thử lại hoặc tự nhập.');
-            // Vẫn chuyển sang edit với dữ liệu đã có
-            if (!document.getElementById('signs-list').innerHTML) {
-                fillList('signs', []);
-                fillList('fixes', []);
-                fillList('costs', []);
-                fillList('benefits', []);
+
+            // Hiển thị lỗi inline thay vì alert — đứng nguyên bước hiện tại
+            const loadingEl = document.getElementById('loading-0');
+            loadingEl.style.display = 'flex';
+            loadingEl.style.background = '#fee2e2';
+            loadingEl.style.color = '#991b1b';
+            loadingEl.innerHTML = `
+                <span class="material-symbols-outlined" style="font-size:20px">error</span>
+                <div>
+                    <strong>Lỗi AI:</strong> ${err.message}<br>
+                    <span style="font-size:0.8rem;color:#b91c1c">Bạn có thể thử lại hoặc tự nhập.</span>
+                </div>
+            `;
+
+            // Reset step indicator về bước 1
+            for (let i = 0; i < STEP_INDICATORS; i++) {
+                const ind = document.getElementById(`step-ind-${i}`);
+                ind.classList.remove('active', 'done');
             }
-            goToStep(4);
+            document.getElementById('step-ind-0').classList.add('active');
         }
     }
 
