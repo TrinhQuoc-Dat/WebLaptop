@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Trang chủ -->
+  <url>
+    <loc>https://sualaptopphuquoc.vn/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Bảng giá dịch vụ -->
+  <url>
+    <loc>https://sualaptopphuquoc.vn/bang-gia</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Dịch vụ sửa chữa -->
+  <url>
+    <loc>https://sualaptopphuquoc.vn/dich-vu</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Danh sách bài viết kỹ thuật -->
+  <url>
+    <loc>https://sualaptopphuquoc.vn/phan-mem</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Liên hệ -->
+  <url>
+    <loc>https://sualaptopphuquoc.vn/lien-he</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ===== BÀI VIẾT CHI TIẾT (Blog / Phần Mềm) ===== -->
+
+  <!-- Bài 1: Sửa laptop Dell XPS lỗi màn hình -->
+  <url>
+    <loc>https://sualaptopphuquoc.vn/phan-mem/loi-man-hinh-dell-xps</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Bài 2: Khắc phục laptop nhấp nháy màn hình -->
+  <url>
+    <loc>https://sualaptopphuquoc.vn/phan-mem/khac-phuc-laptop-nhap-nhay</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Bài 3: Thay pin laptop có ảnh hưởng không -->
+  <url>
+    <loc>https://sualaptopphuquoc.vn/phan-mem/thay-pin-co-anh-huong-khong</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Bài 4: Sửa nguồn laptop mất bao lâu -->
+  <url>
+    <loc>https://sualaptopphuquoc.vn/phan-mem/sua-nguon-bao-lau</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Bài 5: Nâng cấp RAM SSD laptop -->
+  <url>
+    <loc>https://sualaptopphuquoc.vn/phan-mem/nang-cap-ram-ssd</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Bài 6: Vệ sinh laptop định kỳ -->
+  <url>
+    <loc>https://sualaptopphuquoc.vn/phan-mem/ve-sinh-laptop-dinh-ky</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Bài 7: Lỗi bàn phím laptop -->
+  <url>
+    <loc>https://sualaptopphuquoc.vn/phan-mem/loi-ban-phim-laptop</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Bài 8: Lỗi kết nối wifi -->
+  <url>
+    <loc>https://sualaptopphuquoc.vn/phan-mem/loi-ket-noi-wifi-laptop</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Bài 9: Phục hồi dữ liệu ổ cứng -->
+  <url>
+    <loc>https://sualaptopphuquoc.vn/phan-mem/mat-du-lieu-o-cung</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

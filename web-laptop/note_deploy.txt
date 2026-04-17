@@ -1,4 +1,7 @@
 ssh root@157.10.52.96
+cd /var/www/sualaptopphuquoc
+source venv/bin/activate
+python manage.py migrate
 python manage.py collectstatic --noinput
 sudo systemctl restart sualaptopphuquoc
 

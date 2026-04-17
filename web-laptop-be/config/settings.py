@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Django extras
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     # Third-party
     'rest_framework',
     'corsheaders',
@@ -132,6 +135,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Django Sites framework — cần cho Sitemap
+SITE_ID = 1
 
 
 # ─────────────── CORS ───────────────
