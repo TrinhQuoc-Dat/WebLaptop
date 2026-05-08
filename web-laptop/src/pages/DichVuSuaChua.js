@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MessageCircle } from 'lucide-react';
+import usePageTitle from '../hooks/usePageTitle';
 
 const DichVuSuaChua = () => {
+  usePageTitle('Dịch vụ sửa chữa');
   return (
     <div className="dich-vu-sua-chua" style={{ fontFamily: 'Arial, sans-serif', color: '#333' }}>
       <section

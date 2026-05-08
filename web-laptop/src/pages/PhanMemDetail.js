@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getArticleDetail, getMediaUrl } from '../services/api';
 import { phanMemData } from '../data/phanMemData';
+import usePageTitle from '../hooks/usePageTitle';
 import {
   ChevronLeft, Info, Wrench, CheckCircle, Package,
   ShieldCheck, ListOrdered, DollarSign, Clock,
@@ -61,6 +62,9 @@ const PhanMemDetail = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // ─── Hook phải gọi trước early return ───
+  usePageTitle(article?.title || '');
 
   // ─── Loading state ───
   if (loading) {
@@ -415,6 +419,17 @@ const PhanMemDetail = () => {
                 <button className="cta-button-white" style={{ width: '100%', marginTop: '0', fontSize: '1rem', padding: '15px', fontFamily: 'inherit' }}>
                   ĐẶT LỊCH SỬA CHỮA <ArrowRight size={18} />
                 </button>
+              </div>
+
+              {/* Logo cửa hàng */}
+              <div className="detail-sidebar-box" style={{ border: '1px solid #e5e7eb', background: '#fff', textAlign: 'center' }}>
+                <img
+                  src={`${process.env.PUBLIC_URL}/logo.jpg`}
+                  alt="Laptop Phú Quốc"
+                  style={{ width: '100%', maxWidth: '180px', height: 'auto', borderRadius: '6px', marginBottom: '12px' }}
+                />
+                <div style={{ fontWeight: '800', fontSize: '1rem', color: '#0b5e9d' }}>LAPTOP PHÚ QUỐC</div>
+                <div style={{ fontSize: '0.8rem', color: '#666', marginTop: '4px' }}>Sửa chữa uy tín tại Đảo Ngọc</div>
               </div>
 
               {/* Trust Badges */}

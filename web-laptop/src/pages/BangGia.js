@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getPriceList } from '../services/api';
 import { Loader } from 'lucide-react';
+import usePageTitle from '../hooks/usePageTitle';
 
 const FALLBACK_DATA = [
   {
@@ -96,6 +97,7 @@ const FALLBACK_DATA = [
 ];
 
 const BangGia = () => {
+  usePageTitle('Bảng giá dịch vụ');
   const [priceData, setPriceData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isOffline, setIsOffline] = useState(false);

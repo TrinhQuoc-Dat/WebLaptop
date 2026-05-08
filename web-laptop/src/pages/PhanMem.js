@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, Loader } from 'lucide-react';
 import { getArticles, getCategories, getMediaUrl } from '../services/api';
 import { phanMemData } from '../data/phanMemData';
+import usePageTitle from '../hooks/usePageTitle';
 
 const ITEMS_PER_PAGE = 9;
 
 const PhanMem = () => {
+  usePageTitle('Phần mềm & Thủ thuật');
   const [selectedCategory, setSelectedCategory] = useState("Tất cả");
   const [currentPage, setCurrentPage] = useState(1);
 

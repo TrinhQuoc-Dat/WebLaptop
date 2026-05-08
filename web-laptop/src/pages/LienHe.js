@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, MapPin, Clock, Send, ShieldCheck, Award, Users, CheckCircle, Loader } from 'lucide-react';
 import { submitContact, getSiteConfig } from '../services/api';
+import usePageTitle from '../hooks/usePageTitle';
 
 const LienHe = () => {
+  usePageTitle('Liên hệ & Giới thiệu');
   const [formData, setFormData] = useState({
     full_name: '',
     phone: '',

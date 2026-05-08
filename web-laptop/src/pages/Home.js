@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Hero from '../components/Hero';
 import ServiceCard from '../components/ServiceCard';
+import usePageTitle from '../hooks/usePageTitle';
 import {
   mainServices as fallbackServices,
   strengths,
@@ -13,6 +14,7 @@ import { getServices, getMediaUrl } from '../services/api';
 import { ChevronRight } from 'lucide-react';
 
 const Home = () => {
+  usePageTitle('Trang chủ');
   // ─── Fetch dịch vụ chính từ API ───
   const [services, setServices] = useState([]);
 
