@@ -43,7 +43,7 @@ const DichVuSuaChua = () => {
 
       <section style={{ padding: '60px 20px', backgroundColor: '#f8f9fa' }}>
         <div className="container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <h2 style={{ textAlign: 'center', color: '#0ea5e9', textTransform: 'uppercase', marginBottom: '20px', fontSize: '2rem' }}>Dịch vụ sửa chữa laptop uy tín - Giá rẻ tại TP.HCM</h2>
+          <h2 style={{ textAlign: 'center', color: '#0ea5e9', textTransform: 'uppercase', marginBottom: '20px', fontSize: '2rem' }}>Dịch vụ sửa chữa laptop uy tín - Giá rẻ tại Phú Quốc</h2>
           <p style={{ textAlign: 'center', marginBottom: '40px', fontSize: '1.2rem' }}>Laptop bạn đang sử dụng có vấn đề, cần tìm kiếm một <span style={{ color: '#0ea5e9', fontWeight: 'bold' }}>Dịch vụ sửa chữa Laptop</span> Uy tín - Chuyên nghiệp, có giá cả phải chăng. Nhận sửa đa dạng các hãng như: Dell, HP, Acer, Asus, Lenovo,.... thời gian gian sửa chữa nhanh chóng, cam kết linh kiện chính hãng, báo giá cạnh tranh nhất thị trường hiện nay.</p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
             {[
