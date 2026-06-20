@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  Clock, DollarSign, Wrench, MonitorCheck, ShieldCheck,
-  Search, Cpu, Laptop, Monitor, Settings, Square,
+  Clock, DollarSign, Wrench, ShieldCheck,
+  Search,
   PowerOff, MonitorOff, ZapOff, Droplets, BatteryWarning,
   ClipboardList, CheckCircle, Eye, Lock, Tag,
   Truck, ShoppingCart, RefreshCw, Phone

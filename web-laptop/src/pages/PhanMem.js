@@ -64,13 +64,6 @@ const PhanMem = () => {
     return ["Tất cả", ...unique];
   }, [categories]);
 
-  // Tìm slug của category đã chọn (để filter API data)
-  const selectedCategorySlug = useMemo(() => {
-    if (selectedCategory === "Tất cả") return null;
-    const cat = categories.find(c => c.name === selectedCategory);
-    return cat ? cat.slug : null;
-  }, [selectedCategory, categories]);
-
   // Filter data based on category
   const filteredData = useMemo(() => {
     if (selectedCategory === "Tất cả") return articles;
